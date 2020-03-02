@@ -13,10 +13,10 @@ This project is under [Apache License 2.0](https://github.com/Storrund/hobbify/b
 ### Summary
 * Register & Login
 * Each user when creates the account sets multiple hobbies from multiples categories, which can be changed later
-* An logged in user will have multiple page feeds base on which hobbies has attached to the account. 
+* A logged in user will have multiple page feeds based on which hobbies has selected 
 * On each hobby feed page an user can see the posts of his friends and can create posts for that specific hobby
 * From a hobby feed page, the user can navigate to the events panel where:
-	*  Can see an map(or an list)* with all the events (public & from friends) for that hobby
+	*  Can see a map(or a list)* with all the events (public & from friends) for that hobby
 	*  Can select events on map(or from list)* to see all the details
 	*  Can participate or hide it
 * From account page, the user can:
@@ -24,6 +24,8 @@ This project is under [Apache License 2.0](https://github.com/Storrund/hobbify/b
 	* Can see dashboards (with graphs and statics) related to history activity on hobbify platform
 	* Change account credentials
 	* Change hobbies
+	
+*These details of the application hasn't been decided yet
 
 ### Programming Languages & Technologies
 
