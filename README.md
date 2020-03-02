@@ -3,7 +3,7 @@
 
 Hobbify is an online social media and social networking app based on people hobbies. The core concept of this app is to connect people with same hobbies / topics of interest and to have a more opportunities in finding people or events to commit time to your passions.
 
-[Adobe XD Wireframe Design]()
+[Adobe XD Wireframe Design](https://github.com/Storrund/hobbify/blob/master/hobbify_wireframe.xd)
 
 This project is under [Apache License 2.0]()
 
