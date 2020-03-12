@@ -5,6 +5,8 @@ Hobbify is an online social media and social networking app based on people hobb
 
 [Adobe XD Wireframe Design](https://github.com/Storrund/hobbify/blob/master/hobbify_wireframe.xd)
 
+[Tasks & Estimations](https://docs.google.com/spreadsheets/d/1UUdKHjC-4mKt622vxYXB4TW3QoJbfIJBb73NiJr-DWE/edit?usp=sharing)
+
 This project is under [Apache License 2.0](https://github.com/Storrund/hobbify/blob/master/LICENSE)
 
 
