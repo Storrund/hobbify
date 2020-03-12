@@ -1,3 +1,5 @@
+<img src="https://github.com/Storrund/hobbify/blob/master/hobbify_banner.png" width="100%">
+
 # Hobbify
 
 
