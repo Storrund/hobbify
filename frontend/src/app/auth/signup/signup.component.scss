@@ -1,0 +1,40 @@
+.content {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+input, button {
+  width: 95%;
+  margin-bottom: 15px !important;
+}
+
+input{
+  background-color: white;
+  padding: 5px;
+  display: block;
+  margin: auto;
+}
+
+.ui-g-6{
+  padding: 0 !important;
+
+  input{
+    width: 80%;
+    margin: auto;
+  }
+}
+
+.ui-g{
+  input{
+    width: 90%;
+  }
+}
+
+button{
+  background-color: #FAA916;
+  border-color: #FAA916;
+}

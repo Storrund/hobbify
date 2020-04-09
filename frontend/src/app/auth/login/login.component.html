@@ -1,0 +1,16 @@
+<div class="content">
+    <h1>HOBBIFY</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur mollis nisi eu egestas. </p>
+
+    <div class="child">
+        <p-messages *ngIf="this.message.length > 0" [(value)]="this.message"></p-messages>
+        <p>Already have an account?</p>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="form">
+            <input pInputText type="text" formControlName="username" placeholder="Username" required>
+            <input pInputText type="text" formControlName="password" placeholder="Password" required type="password">
+            <button pButton class="ui-button-secondary" label="Login" [disabled]="!loginForm.form.valid"></button>
+        </form>
+        <button pButton class="ui-button-secondary" label="Reset Credentials" (onClick)="onResetCredentials()"></button>
+    </div>
+
+</div>
