@@ -8,7 +8,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NotFoundComponent} from './not-found';
 
-import {ApiService, AuthService, ConfigService, FooService, UserService} from './service';
+import {ApiService, AuthService, ConfigService, UserService} from './service';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {ForbiddenComponent} from './forbidden/forbidden.component';
 import {AdminComponent} from './admin/admin.component';
@@ -48,7 +48,6 @@ import {MainComponent} from './main/main.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
       AuthGuard,
-      FooService,
       AuthService,
       ApiService,
       UserService,
