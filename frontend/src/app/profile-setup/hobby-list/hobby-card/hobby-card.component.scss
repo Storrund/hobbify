@@ -1,0 +1,26 @@
+ .hobby{
+  display: block;
+  padding: 40px;
+  border-radius: 10%;
+  border: 3px solid black;
+  margin: 0 10px;
+  text-align: center;
+
+  .icon{
+    margin-bottom: 10px;
+  }
+
+  .name{
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.red{
+  color: red;
+}
+
+.yellow{
+  color: yellow;
+}

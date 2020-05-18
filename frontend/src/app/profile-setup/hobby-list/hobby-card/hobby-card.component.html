@@ -1,0 +1,13 @@
+<div class="hobby"
+     [ngStyle]="{'background-color': isSelected ? color : 'transparent',
+                 'border-color': isSelected ? color : 'black',
+                 'color': isSelected ? 'white' : 'black'}">
+    <div class="icon">
+        <hobbify-hobby-icon
+                [iconTag]="hobby.iconTag"
+                [size]="'20'"
+                [color]="color"
+                [isSelected]="isSelected"></hobbify-hobby-icon>
+    </div>
+    <span class="name">{{hobby.name}}</span>
+</div>
