@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/profile/", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/profile", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProfileController {
 
     private ProfileService profileService;

@@ -11,7 +11,7 @@ import java.util.Set;
 public class Profile extends BaseEntity {
 
     @OneToOne
-    @JoinColumn(name = "uuid", foreignKey = @ForeignKey(name = "FK_PROFILE__CUSTOM_USER"))
+    @JoinColumn(name = "custom_user_uuid", foreignKey = @ForeignKey(name = "FK_PROFILE__CUSTOM_USER"))
     private CustomUser customUser;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

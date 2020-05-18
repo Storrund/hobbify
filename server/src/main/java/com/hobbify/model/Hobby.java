@@ -16,7 +16,7 @@ public class Hobby extends BaseEntity {
 
 
     @OneToOne
-    @JoinColumn(name = "uuid", foreignKey = @ForeignKey(name = "FK_HOBBY__HOBBY_CATEGORY"))
+    @JoinColumn(name = "hobby_category_uuid", foreignKey = @ForeignKey(name = "FK_HOBBY__HOBBY_CATEGORY"))
     private HobbyCategory hobbyCategory;
 
     public String getName() {

@@ -1,8 +1,6 @@
 package com.hobbify.rest;
 
 
-import com.hobbify.repository.HobbyCategoryJPARepository;
-import com.hobbify.repository.HobbyJPARepository;
 import com.hobbify.service.HobbyCategoryService;
 import com.hobbify.service.HobbyService;
 import com.hobbify.service.vo.HobbyCategoryVo;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/hobby/metadata/", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/hobby/metadata", produces = MediaType.APPLICATION_JSON_VALUE)
 public class HobbyMetadataController {
 
 
