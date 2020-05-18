@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="profile")
+@Table(name="profile",
+        indexes = {@Index(name = "user_uuid_index",  columnList="custom_user_uuid", unique = true)})
 public class Profile extends BaseEntity {
 
     @OneToOne
