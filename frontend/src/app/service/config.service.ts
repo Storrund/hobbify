@@ -41,4 +41,12 @@ export class ConfigService {
     return this._api_url + '/signup';
   }
 
+  get hobby_metadata_url(): string {
+    return this._api_url + '/hobby/metadata';
+  }
+
+  get profile_url(): string {
+    return this._api_url + '/profile';
+  }
+
 }
