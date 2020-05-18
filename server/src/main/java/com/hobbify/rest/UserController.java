@@ -60,7 +60,7 @@ public class UserController {
     }
     CustomUser customUser = this.userService.save(userRequest);
     HttpHeaders headers = new HttpHeaders();
-    headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(customUser.getId()).toUri());
+    headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(customUser.getUuid()).toUri());
     return new ResponseEntity<CustomUser>(customUser, HttpStatus.CREATED);
   }
 

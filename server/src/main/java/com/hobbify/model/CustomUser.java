@@ -7,9 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -20,12 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "custom_user")
-public class CustomUser implements UserDetails, Serializable {
-
-  @Id
-  @Column(name = "id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class CustomUser extends BaseEntity implements UserDetails, Serializable {
 
   @Column(name = "username")
   private String username;
@@ -43,17 +35,9 @@ public class CustomUser implements UserDetails, Serializable {
 
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(name = "user_authority",
-      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-      inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+      joinColumns = @JoinColumn(name = "user_uuid", referencedColumnName = "uuid"),
+      inverseJoinColumns = @JoinColumn(name = "authority_uuid", referencedColumnName = "uuid"))
   private List<Authority> authorities;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
 
   public String getUsername() {
     return username;
