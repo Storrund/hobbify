@@ -1,0 +1,43 @@
+.content {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.category{
+  text-align: left;
+
+  .category-name{
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: block;
+  }
+
+  .hobbies{
+    display: inline-flex;
+    margin: 10px 0;
+  }
+}
+
+.confirm-button{
+  background-color: #FAA916;
+  border: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.confirm-button:enabled:hover{
+  background-color: #ffc863;
+}
+
+.red{
+  color: red;
+}
+
+.yellow{
+  color: yellow;
+}

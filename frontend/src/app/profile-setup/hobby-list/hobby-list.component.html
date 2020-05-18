@@ -1,0 +1,38 @@
+
+<div class="content">
+    <h1>Please select your topics of interests…</h1>
+
+    <div *ngIf="hobbyMetadata">
+        <div class="ui-g-1"></div>
+        <div class="ui-g-10">
+            <div *ngFor="let category of hobbyMetadata.hobbyCategories">
+                <div class="category">
+                    <span class="category-name" [ngClass]="category.color">{{category.name}}</span>
+                    <div class="hobbies">
+                        <div *ngFor="let hobby of hobbyMetadata.hobbies[category.uuid]"
+                             (click)="select(hobby)">
+                            <hobbify-hobby-card
+                                [hobby]="hobby"
+                                [color]="category.color"
+                                [isSelected]="isSelected(hobby)">
+                            </hobbify-hobby-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-g-1"></div>
+    </div>
+
+    <div class="footer">
+        <div class="ui-g-1"></div>
+        <div class="ui-g-10">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur mollis nisi eu egestas. Curabitur fringilla massa eu diam cursus, quis imperdiet nulla faucibus. Vestibulum scelerisque mi rutrum lacus eleifend, at iaculis justo suscipit.</p>
+            <button pButton
+                    class="ui-button-primary confirm-button"
+                    label="Confirm your topics of interest"
+                    (click)="submit()"></button>
+        </div>
+        <div class="ui-g-1"></div>
+    </div>
+</div>
