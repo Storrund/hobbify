@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     return u;
   }
 
-  @PreAuthorize("hasRole('ADMIN')")
+  @PreAuthorize("hasRole('USER')")
   public CustomUser findByUuid(String uuid) throws AccessDeniedException {
     CustomUser u = userJPARepository.getOne(uuid);
     return u;
