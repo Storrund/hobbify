@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {Route, RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin';
 import {NotFoundComponent} from './not-found';
 import {ChangePasswordComponent} from './change-password';
@@ -7,31 +7,48 @@ import {ForbiddenComponent} from './forbidden';
 import {AuthGuard} from './auth/guard';
 import {AuthComponent} from './auth';
 import {MainComponent} from './main/main.component';
+import {ProfileSetupComponent} from './profile-setup/profile-setup.component';
+import {ProfileSetupGuard} from './profile-setup/profile-setup-guard';
+import {CompositeRouteGuard} from './shared/composite-route-guard';
+import {AppComponent} from './app.component';
 
-export const routes: Routes = [
+export const routes: Route[] = [
   {
     path: '',
-    component: MainComponent,
-    data: { authorities: ['ROLE_USER'] },
-    canActivate: [AuthGuard],
-    pathMatch: 'full'
-  },
-  {
-    path: 'auth',
-    component: AuthComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'change-password',
-    component: ChangePasswordComponent,
-    data: { authorities: ['ROLE_USER', 'ROLE_ADMIN'] },
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    data: { authorities: ['ROLE_ADMIN'] },
-    canActivate: [AuthGuard]
+    data: {
+      routeGuards: [AuthGuard, ProfileSetupGuard]
+    },
+    canActivateChild: [CompositeRouteGuard],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+      {
+        path: 'home',
+        data: { authorities: ['ROLE_USER'] },
+        component: MainComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileSetupComponent,
+      },
+      {
+        path: 'auth',
+        component: AuthComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+        data: { authorities: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        data: { authorities: ['ROLE_ADMIN'] },
+      },
+    ]
   },
   {
     path: '404',
@@ -41,14 +58,10 @@ export const routes: Routes = [
     path: '403',
     component: ForbiddenComponent
   },
-  {
-    path: '**',
-    redirectTo: '/404'
-  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
   providers: []
 })

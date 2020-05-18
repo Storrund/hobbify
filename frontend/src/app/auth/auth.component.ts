@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from './auth.service';
 
 @Component({
-    selector: 'app-auth-component',
+    selector: 'hobbify-auth-component',
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.scss']
 })

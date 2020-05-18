@@ -35,7 +35,7 @@ public class ProfileServiceImpl implements ProfileService {
         Profile profile = profileJPARepository.findByCustomUserUuid(userUuid);
 
         if(profile == null){
-            throw new ProfileNotFoundException();
+            return null;
         }
 
         return profileDTOMapper.getDtoFromEntity(profile);

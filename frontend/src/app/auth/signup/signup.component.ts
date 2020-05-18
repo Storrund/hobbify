@@ -5,7 +5,7 @@ import {AuthService, UserService} from '../../service';
 import {Subject} from 'rxjs/Subject';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'hobbify-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
@@ -49,8 +49,8 @@ export class SignupComponent implements OnInit, OnDestroy {
           console.log(data);
           this.authService.login(this.form.value).subscribe(() => {
             this.userService.getMyInfo().subscribe();
+            this.router.navigate(['/profile']);
           });
-          this.router.navigate([this.returnUrl]);
         },
         error => {
           console.log('Sign up error' + JSON.stringify(error));

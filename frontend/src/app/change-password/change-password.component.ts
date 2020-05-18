@@ -5,7 +5,7 @@ import {AuthService} from '../service';
 import {mergeMap} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-change-password',
+  selector: 'hobbify-change-password',
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.scss']
 })

@@ -4,9 +4,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService, UserService} from '../../service';
 import {Subject} from 'rxjs/Subject';
 import {takeUntil} from 'rxjs/operators';
+import {ProfileService} from '../../service/profile.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'hobbify-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private authService: AuthService,
+    private profileService: ProfileService,
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
@@ -59,8 +61,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService.login(this.form.value)
       .subscribe(data => {
           this.userService.getMyInfo().subscribe(user => {
-                this.userService.setCurrentUser(user);
-                this.router.navigate([this.returnUrl]);
+              this.profileService.getProfileByUserUuid(user.uuid).subscribe(profile => {
+                  this.profileService.setUserProfile(profile);
+                  this.userService.setCurrentUser(user);
+                  this.router.navigate([`/${this.returnUrl}`]);
+              });
           });
         },
         error => {

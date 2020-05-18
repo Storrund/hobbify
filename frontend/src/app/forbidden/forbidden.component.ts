@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-forbidden',
+  selector: 'hobbify-forbidden',
   templateUrl: './forbidden.component.html',
   styleUrls: ['./forbidden.component.scss']
 })

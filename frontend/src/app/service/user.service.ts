@@ -1,20 +1,22 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {ConfigService} from './config.service';
-import {map} from 'rxjs/operators';
+import {map, take} from 'rxjs/operators';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {CustomUserModel} from '../shared/domain/auth/custom-user.model';
+import { isEqual } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  currentUser;
+  currentUser = new CustomUserModel();
 
   private currentUserSubject: ReplaySubject<CustomUserModel> = new ReplaySubject<CustomUserModel>(1);
 
   constructor(private apiService: ApiService, private config: ConfigService) {
+    this.currentUserSubject.next(this.currentUser);
   }
 
   getCurrentUser(): Observable<CustomUserModel> {
@@ -22,7 +24,12 @@ export class UserService {
   }
 
   setCurrentUser(user: CustomUserModel) {
-    this.currentUserSubject.next(user);
+    this.currentUserSubject.pipe(take(1)).subscribe(oldUser => {
+      if (!isEqual(oldUser, user)) {
+        this.currentUserSubject.next(user);
+      }
+    });
+
     this.currentUser = user;
   }
 

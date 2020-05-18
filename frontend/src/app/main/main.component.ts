@@ -1,17 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService, UserService} from '../service';
 import {Router} from '@angular/router';
+import {HobbyMetadataService} from '../service/hobby-metadata.service';
 
 @Component({
-    selector: 'app-main',
+    selector: 'hobbify-main',
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
 
     constructor(
         private userService: UserService,
         private authService: AuthService,
+        private hobbyMetadataService: HobbyMetadataService,
         private router: Router
     ) {
     }
@@ -25,7 +27,7 @@ export class MainComponent implements OnInit{
 
     userName() {
         const user = this.userService.currentUser;
-        return user.firstname + ' ' + user.lastname;
+        return user.firstName + ' ' + user.lastName;
     }
 
     logout() {
