@@ -1,11 +1,12 @@
 package com.hobbify.service.vo;
 
 import java.util.List;
+import java.util.Map;
 
 public class HobbyMetadataVo {
 
     private List<HobbyCategoryVo> hobbyCategories;
-    private List<HobbyVo> hobbies;
+    private Map<String,List<HobbyVo>> hobbies;
 
     public List<HobbyCategoryVo> getHobbyCategories() {
         return hobbyCategories;
@@ -15,11 +16,11 @@ public class HobbyMetadataVo {
         this.hobbyCategories = hobbyCategories;
     }
 
-    public List<HobbyVo> getHobbies() {
+    public Map<String,List<HobbyVo>> getHobbies() {
         return hobbies;
     }
 
-    public void setHobbies(List<HobbyVo> hobbies) {
+    public void setHobbies(Map<String,List<HobbyVo>> hobbies) {
         this.hobbies = hobbies;
     }
 }

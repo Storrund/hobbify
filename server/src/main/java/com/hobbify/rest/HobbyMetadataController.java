@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/hobby/metadata", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -33,10 +35,11 @@ public class HobbyMetadataController {
     public ResponseEntity<?> getHobbiesMetadata() {
         List<HobbyVo> hobbyVoList = this.hobbyService.getAll();
         List<HobbyCategoryVo> hobbyCategoryVoList = this.hobbyCategoryService.getAll();
+        Map<String, List<HobbyVo>> categoryToHobbiesMap = hobbyVoList.stream().collect(Collectors.groupingBy(HobbyVo::getHobbyCategoryUuid));
 
         HobbyMetadataVo hobbyMetadataVo = new HobbyMetadataVo();
-        hobbyMetadataVo.setHobbies(hobbyVoList);
         hobbyMetadataVo.setHobbyCategories(hobbyCategoryVoList);
+        hobbyMetadataVo.setHobbies(categoryToHobbiesMap);
 
         return new ResponseEntity<>(hobbyMetadataVo, HttpStatus.CREATED);
     }
