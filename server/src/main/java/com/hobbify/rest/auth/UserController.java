@@ -56,7 +56,7 @@ public class UserController {
 
     CustomUser existCustomUser = this.userService.findByUsername(userRequest.getUsername());
     if (existCustomUser != null) {
-      throw new ResourceConflictException(userRequest.getId(), "Username already exists");
+      throw new ResourceConflictException(userRequest.getUuid(), "Username already exists");
     }
     CustomUser customUser = this.userService.save(userRequest);
     HttpHeaders headers = new HttpHeaders();

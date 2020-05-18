@@ -21,6 +21,11 @@ import com.hobbify.security.auth.LogoutSuccess;
 import com.hobbify.security.auth.RestAuthenticationEntryPoint;
 import com.hobbify.security.auth.TokenAuthenticationFilter;
 import com.hobbify.service.auth.impl.CustomUserDetailsService;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 
 @Configuration
@@ -71,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().ignoringAntMatchers("/api/login", "/api/signup")
+    http.cors().and().csrf().ignoringAntMatchers("/api/login", "/api/signup")
         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
@@ -80,7 +85,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler)
         .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/api/logout"))
         .logoutSuccessHandler(logoutSuccess).deleteCookies(TOKEN_COOKIE);
+  }
 
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration configuration = new CorsConfiguration();
+    configuration.setAllowedOrigins(Arrays.asList("*"));
+    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
+    configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
+    configuration.setAllowCredentials(true);
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", configuration);
+    return source;
   }
 
 }

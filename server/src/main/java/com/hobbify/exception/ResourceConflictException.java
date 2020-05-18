@@ -3,18 +3,18 @@ package com.hobbify.exception;
 public class ResourceConflictException extends RuntimeException {
 
   private static final long serialVersionUID = 1791564636123821405L;
-  private Long resourceId;
+  private String resourceId;
 
-  public ResourceConflictException(Long resourceId, String message) {
+  public ResourceConflictException(String resourceId, String message) {
     super(message);
     this.setResourceId(resourceId);
   }
 
-  public Long getResourceId() {
+  public String getResourceId() {
     return resourceId;
   }
 
-  public void setResourceId(Long resourceId) {
+  public void setResourceId(String resourceId) {
     this.resourceId = resourceId;
   }
 }

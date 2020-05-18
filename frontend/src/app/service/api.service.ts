@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders, HttpRequest, HttpResponse} from '@angular/commo
 import {Injectable} from '@angular/core';
 import {serialize} from '../shared/utilities/serialize';
 import {Observable} from 'rxjs';
-import {catchError, filter, map} from 'rxjs/operators';
+import {catchError, filter, map, tap} from 'rxjs/operators';
 
 export enum RequestMethod {
   Get = 'GET',
@@ -38,7 +38,9 @@ export class ApiService {
     }
 
     return this.http.get(path, options)
-      .pipe(catchError(this.checkError.bind(this)));
+      .pipe(
+          catchError(this.checkError.bind(this))
+      );
   }
 
   post(path: string, body: any, customHeaders?: HttpHeaders): Observable<any> {

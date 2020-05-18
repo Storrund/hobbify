@@ -3,7 +3,7 @@ import {ApiService} from './api.service';
 import {ConfigService} from './config.service';
 import {map} from 'rxjs/operators';
 import {Observable, of, ReplaySubject} from 'rxjs';
-import {CustomUserModel} from '../shared/domain/custom-user.model';
+import {CustomUserModel} from '../shared/domain/auth/custom-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +12,17 @@ export class UserService {
 
   currentUser;
 
-  private currentUser1: ReplaySubject<CustomUserModel> = new ReplaySubject<CustomUserModel>(1);
+  private currentUserSubject: ReplaySubject<CustomUserModel> = new ReplaySubject<CustomUserModel>(1);
 
   constructor(private apiService: ApiService, private config: ConfigService) {
   }
 
   getCurrentUser(): Observable<CustomUserModel> {
-    return this.currentUser1.asObservable();
+    return this.currentUserSubject.asObservable();
   }
 
   setCurrentUser(user: CustomUserModel) {
-    this.currentUser1.next(user);
+    this.currentUserSubject.next(user);
     this.currentUser = user;
   }
 
@@ -33,7 +33,7 @@ export class UserService {
           return this.getMyInfo().toPromise()
             .then(user => {
               this.currentUser = user;
-              this.currentUser1.next(user);
+              this.currentUserSubject.next(user);
             });
         }
       })

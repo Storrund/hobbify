@@ -2,7 +2,7 @@ package com.hobbify.model.auth;
 
 public class UserRequest {
 
-  private Long id;
+  private String uuid;
 
   private String username;
 
@@ -45,11 +45,11 @@ public class UserRequest {
     this.lastname = lastname;
   }
 
-  public Long getId() {
-    return id;
+  public String getUuid() {
+    return uuid;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setUuid(String uuid) {
+    this.uuid = uuid;
   }
 }
