@@ -20,7 +20,7 @@ import com.hobbify.security.auth.AuthenticationSuccessHandler;
 import com.hobbify.security.auth.LogoutSuccess;
 import com.hobbify.security.auth.RestAuthenticationEntryPoint;
 import com.hobbify.security.auth.TokenAuthenticationFilter;
-import com.hobbify.service.impl.CustomUserDetailsService;
+import com.hobbify.service.auth.impl.CustomUserDetailsService;
 
 
 @Configuration

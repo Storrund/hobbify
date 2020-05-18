@@ -1,9 +1,9 @@
 package com.hobbify;
 
-import com.hobbify.model.Authority;
-import com.hobbify.model.CustomUser;
-import com.hobbify.model.UserRoleName;
-import com.hobbify.repository.UserRepository;
+import com.hobbify.model.auth.Authority;
+import com.hobbify.model.auth.CustomUser;
+import com.hobbify.model.auth.UserRoleName;
+import com.hobbify.repository.auth.UserJPARepository;
 import com.hobbify.security.auth.AnonAuthentication;
 import com.hobbify.security.auth.TokenBasedAuthentication;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +27,7 @@ import java.util.List;
 public abstract class AbstractTest {
 
 	@Autowired
-	protected UserRepository userRepository;
+	protected UserJPARepository userJPARepository;
 
 	@Autowired
 	protected ObjectMapper objectMapper;

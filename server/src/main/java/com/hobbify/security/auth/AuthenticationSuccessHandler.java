@@ -1,7 +1,7 @@
 package com.hobbify.security.auth;
 
-import com.hobbify.model.CustomUser;
-import com.hobbify.model.UserTokenState;
+import com.hobbify.model.auth.CustomUser;
+import com.hobbify.model.auth.UserTokenState;
 import com.hobbify.security.TokenHelper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
