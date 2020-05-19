@@ -47,6 +47,7 @@ export class ProfileSetupComponent implements OnInit {
         this.formGroup = this.formBuilder.group({
             firstName: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             lastName: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
+            description: ['', Validators.compose([Validators.required])],
         });
     }
 
@@ -58,7 +59,7 @@ export class ProfileSetupComponent implements OnInit {
                 profileDto.hobbies = event;
                 profileDto.firstName = this.formGroup.controls['firstName'].value;
                 profileDto.lastName = this.formGroup.controls['lastName'].value;
-                profileDto.description = this.description;
+                profileDto.description = this.formGroup.controls['description'].value;
 
                 return this.profileService.saveProfile(profileDto);
             })).subscribe(data => {
