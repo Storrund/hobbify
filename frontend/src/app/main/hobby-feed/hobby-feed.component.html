@@ -6,16 +6,39 @@
                     [iconTag]="hobby.iconTag"
                     [size]="'15'"
                     [defaultColor]="'white'"
-                    [backgroundColor]="'red'"
+                    [backgroundColor]="'#FAA916'"
                     [borderColor]="'white'"></hobbify-hobby-icon>
             <h1>{{hobby.name}} Feed</h1>
         </div>
 
-        <div class="form">
+        <div class="action-bar">
+            <button pButton class="ui-button-secondary" label="New Post" (click)="onPost()"></button>
+            <button pButton class="ui-button-secondary" label="Events" (click)="onEvent()"></button>
+        </div>
+
+        <div class="form" *ngIf="postForm">
             <h3>New Post</h3>
 
-            <textarea pInputTextarea [(ngModel)]="content" class="content-input" placeholder="Content"></textarea>
+            <textarea pInputTextarea [(ngModel)]="content" class="content-input" placeholder="Write yout text here..."></textarea>
             <button pButton class="ui-button-secondary" label="Post" (click)="onSubmit()"></button>
+        </div>
+
+        <div class="posts">
+            <div *ngFor="let post of posts">
+                <div class="post">
+                    <div class="header">
+                        <hobbify-profile-icon
+                            [firstName]="post.firstName"
+                            [lastName]="post.lastName"
+                            [size]="'12'"></hobbify-profile-icon>
+                        <span>{{post.firstName}}</span>
+                        <span>{{post.lastName}}</span>
+                    </div>
+                    <div class="content">
+                        <span>{{post.content}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

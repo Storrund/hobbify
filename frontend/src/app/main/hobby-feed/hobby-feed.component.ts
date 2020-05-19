@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 import {PostService} from '../../service/post.service';
 import {ProfileService} from '../../service/profile.service';
 import {HobbyVoModel} from '../../shared/domain/hobby-vo.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostDtoModel} from '../../shared/domain/post-dto.model';
+import {PostVoModel} from '../../shared/domain/post-vo.model';
 
 @Component({
     selector: 'hobbify-hobby-feed',
@@ -13,9 +13,23 @@ import {PostDtoModel} from '../../shared/domain/post-dto.model';
 })
 export class HobbyFeedComponent implements OnInit {
 
-    @Input() hobby: HobbyVoModel;
+    _hobby: HobbyVoModel;
+    get hobby(): HobbyVoModel {
+        return this._hobby;
+    }
+
+    @Input('hobby')
+    set hobby(hobby: HobbyVoModel) {
+        this._hobby = hobby;
+        if (hobby) {
+            this.loadPosts();
+        }
+    }
+
+    posts: PostVoModel[] = [];
 
     content: string;
+    postForm: boolean = false;
 
     constructor(
         private postService: PostService,
@@ -24,14 +38,32 @@ export class HobbyFeedComponent implements OnInit {
     ) {
     }
 
-    ngOnInit() {
+    ngOnInit() {}
+
+    loadPosts() {
+        this.profileService.getUserProfile().subscribe(profile => {
+            this.postService.getAllByHobbyUuidAndProfileUuid(this.hobby.uuid, profile.uuid).subscribe(posts => {
+                this.posts = [...posts];
+            });
+        });
     }
 
     onSubmit() {
         if (this.content) {
             const postDto = this.createPostDto();
-            this.postService.savePost(postDto).subscribe();
+            this.postService.savePost(postDto).subscribe(post => {
+                this.posts.push(post);
+                this.postForm = false;
+            });
         }
+    }
+
+    onPost() {
+        this.postForm = true;
+    }
+
+    onEvent() {
+
     }
 
     createPostDto() {

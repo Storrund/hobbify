@@ -31,6 +31,7 @@ import {ProfileSetupGuard} from './profile-setup/profile-setup-guard';
 import {CompositeRouteGuard} from './shared/composite-route-guard';
 import {SidebarComponent} from './main/sidebar/sidebar.component';
 import {HobbyFeedComponent} from './main/hobby-feed/hobby-feed.component';
+import {ProfileIconComponent} from './shared/components/profile-icon/profile-icon.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {HobbyFeedComponent} from './main/hobby-feed/hobby-feed.component';
       HobbyIconComponent,
       HobbyCardComponent,
       SidebarComponent,
-      HobbyFeedComponent
+      HobbyFeedComponent,
+      ProfileIconComponent
   ],
   imports: [
       BrowserAnimationsModule,
