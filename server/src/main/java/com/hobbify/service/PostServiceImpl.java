@@ -9,6 +9,8 @@ import com.hobbify.service.vo.PostVoMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -37,13 +39,18 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostVo getByHobbyUuid(String hobbyUuid, String profileUuid){
-        Post post = postJPARepository.findByHobbyUuid(hobbyUuid);
+    public List<PostVo> getAllByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid){
+        List<Post> postList = postJPARepository.findAllByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid);
 
-        if(post == null){
+        if(postList == null){
             return null;
         }
 
-        return postVoMapper.getVoFromEntity(post);
+        List<PostVo> postVoList = new ArrayList<>();
+        for(Post post : postList){
+            postVoList.add(postVoMapper.getVoFromEntity(post));
+        }
+
+        return postVoList;
     }
 }

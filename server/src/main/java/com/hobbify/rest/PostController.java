@@ -11,6 +11,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/api/post", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PostController {
@@ -35,8 +37,8 @@ public class PostController {
     @PreAuthorize("hasRole('USER')")
     public @ResponseBody
     ResponseEntity<?> getProfileByUserUuid(@PathVariable String hobbyUuid, @PathVariable String profileUuid) {
-        PostVo postVo = this.postService.getByHobbyUuid(hobbyUuid, profileUuid);
-        return new ResponseEntity<>(postVo, HttpStatus.OK);
+        List<PostVo> postVoList = this.postService.getAllByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid);
+        return new ResponseEntity<>(postVoList, HttpStatus.OK);
     }
 
 }
