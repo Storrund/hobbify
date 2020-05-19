@@ -4,41 +4,45 @@ import com.hobbify.model.Profile;
 import com.hobbify.repository.ProfileJPARepository;
 import com.hobbify.service.dto.ProfileDTO;
 import com.hobbify.service.dto.ProfileDTOMapper;
-import com.hobbify.service.exception.ProfileNotFoundException;
+import com.hobbify.service.vo.ProfileVo;
+import com.hobbify.service.vo.ProfileVoMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProfileServiceImpl implements ProfileService {
 
-    private ProfileJPARepository profileJPARepository;
-    private ProfileDTOMapper profileDTOMapper;
+    private final ProfileJPARepository profileJPARepository;
+    private final ProfileDTOMapper profileDTOMapper;
+    private final ProfileVoMapper profileVoMapper;
 
     public ProfileServiceImpl(
             ProfileJPARepository profileJPARepository,
-            ProfileDTOMapper profileDTOMapper){
+            ProfileDTOMapper profileDTOMapper,
+            ProfileVoMapper profileVoMapper){
         this.profileJPARepository = profileJPARepository;
         this.profileDTOMapper = profileDTOMapper;
+        this.profileVoMapper = profileVoMapper;
     }
 
     @Transactional
     @Override
-    public ProfileDTO save(ProfileDTO profileDTO){
+    public ProfileVo save(ProfileDTO profileDTO){
         Profile profile = profileDTOMapper.getEntityFromDto(profileDTO);
         profileJPARepository.save(profile);
 
-        return profileDTO;
+        return profileVoMapper.getVoFromEntity(profile);
     }
 
     @Override
-    public ProfileDTO getByUserUuid(String userUuid){
+    public ProfileVo getByUserUuid(String userUuid){
         Profile profile = profileJPARepository.findByCustomUserUuid(userUuid);
 
         if(profile == null){
             return null;
         }
 
-        return profileDTOMapper.getDtoFromEntity(profile);
+        return profileVoMapper.getVoFromEntity(profile);
     }
 
     @Override

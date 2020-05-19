@@ -2,12 +2,13 @@ package com.hobbify.service;
 
 import com.hobbify.model.Profile;
 import com.hobbify.service.dto.ProfileDTO;
+import com.hobbify.service.vo.ProfileVo;
 
 public interface ProfileService {
 
-    ProfileDTO save(ProfileDTO profileDTO);
+    ProfileVo save(ProfileDTO profileDTO);
 
-    ProfileDTO getByUserUuid(String userUuid);
+    ProfileVo getByUserUuid(String userUuid);
 
     Profile getByUuid(String uuid);
 

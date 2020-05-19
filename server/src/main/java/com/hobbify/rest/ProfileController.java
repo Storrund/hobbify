@@ -1,7 +1,9 @@
 package com.hobbify.rest;
 
+import com.hobbify.model.Profile;
 import com.hobbify.service.ProfileService;
 import com.hobbify.service.dto.ProfileDTO;
+import com.hobbify.service.vo.ProfileVo;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,16 +28,16 @@ public class ProfileController {
     @PreAuthorize("hasRole('USER')")
     public @ResponseBody
     ResponseEntity<?> saveProfile(@RequestBody ProfileDTO profileDTO) {
-        ProfileDTO profileDtoSaved = profileService.save(profileDTO);
-        return new ResponseEntity<>(profileDtoSaved, HttpStatus.CREATED);
+        ProfileVo profileVo = profileService.save(profileDTO);
+        return new ResponseEntity<>(profileVo, HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/{userUuid}", method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     public @ResponseBody
     ResponseEntity<?> getProfileByUserUuid(@PathVariable String userUuid) {
-        ProfileDTO profileDTO = this.profileService.getByUserUuid(userUuid);
-        return new ResponseEntity<>(profileDTO, HttpStatus.OK);
+        ProfileVo profileVo = this.profileService.getByUserUuid(userUuid);
+        return new ResponseEntity<>(profileVo, HttpStatus.OK);
     }
 
 }
