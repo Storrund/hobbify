@@ -11,6 +11,7 @@ import {ProfileSetupComponent} from './profile-setup/profile-setup.component';
 import {ProfileSetupGuard} from './profile-setup/profile-setup-guard';
 import {CompositeRouteGuard} from './shared/composite-route-guard';
 import {AppComponent} from './app.component';
+import {ProfileMainComponent} from './profile/profile-main.component';
 
 export const routes: Route[] = [
   {
@@ -31,8 +32,13 @@ export const routes: Route[] = [
         component: MainComponent,
       },
       {
-        path: 'profile',
+        path: 'profile-setup',
         component: ProfileSetupComponent,
+      },
+      {
+        path: 'profile',
+        data: { authorities: ['ROLE_USER'] },
+        component: ProfileMainComponent,
       },
       {
         path: 'auth',

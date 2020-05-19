@@ -47,4 +47,8 @@ export class ProfileService {
     getProfileByUserUuid(userUuid: string): Observable<ProfileVoModel> {
         return this.apiService.get(this.config.profile_url + '/' + userUuid);
     }
+
+    findAllByName(name: string, limit: number, offset: number): Observable<ProfileVoModel[]> {
+        return this.apiService.get(this.config.profile_url + '/search/' + name + '/' + limit + '/' + offset);
+    }
 }

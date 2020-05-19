@@ -33,6 +33,11 @@ import {HobbyFeedComponent} from './main/hobby-feed/hobby-feed.component';
 import {ProfileIconComponent} from './shared/components/profile-icon/profile-icon.component';
 import {HobbifyDatePipe} from './shared/components/date-pipe/hobbify-date.pipe';
 import {PostComponent} from './main/hobby-feed/post/post.component';
+import {ProfileSidebarComponent} from './profile/sidebar/profile-sidebar.component';
+import {ProfileMainComponent} from './profile/profile-main.component';
+import {FindFriendsComponent} from './profile/find-friends/find-friends.component';
+import {ProfileComponent} from './shared/components/profile/profile.component';
+import {ProfileFriendService} from './service/profile-friend.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +58,11 @@ import {PostComponent} from './main/hobby-feed/post/post.component';
       HobbyFeedComponent,
       ProfileIconComponent,
       HobbifyDatePipe,
-      PostComponent
+      PostComponent,
+      ProfileSidebarComponent,
+      ProfileMainComponent,
+      FindFriendsComponent,
+      ProfileComponent
   ],
   imports: [
       BrowserAnimationsModule,
@@ -83,6 +92,7 @@ import {PostComponent} from './main/hobby-feed/post/post.component';
       ProfileService,
       ProfileSetupGuard,
       CompositeRouteGuard,
+      ProfileFriendService,
       { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],

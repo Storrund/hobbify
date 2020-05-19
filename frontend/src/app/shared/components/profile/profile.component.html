@@ -1,0 +1,26 @@
+<div>
+    <div class="ui-g-3">
+        <hobbify-profile-icon
+                [firstName]="userProfile.firstName"
+                [lastName]="userProfile.lastName"
+                [size]="'30'"></hobbify-profile-icon>
+    </div>
+    <div class="ui-g-9">
+        <div class="profile-header">
+            <span>{{userProfile.firstName}} {{userProfile.lastName}}</span>
+            <div class="hobbies">
+                <div *ngFor="let hobby of userProfile.hobbies">
+                    <hobbify-hobby-icon
+                            [iconTag]="hobby.iconTag"
+                            [size]="'12'"
+                            [defaultColor]="'white'"
+                            [backgroundColor]="'#FAA916'"
+                            [borderColor]="'white'"></hobbify-hobby-icon>
+                </div>
+            </div>
+        </div>
+        <div class="profile-content">
+            <button pButton class="ui-button-secondary" (click)="addFriend()" label="Add Friend"></button>
+        </div>
+    </div>
+</div>

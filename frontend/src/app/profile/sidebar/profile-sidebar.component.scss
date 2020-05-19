@@ -1,0 +1,32 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.child{
+  margin-top: auto;
+  width: 100%;
+  padding: 0.5em;
+
+  button {
+    background-color: white;
+    width: 100%;
+    border: 0;
+    color: black;
+    font-weight: 800;
+    padding: 8px;
+    margin-bottom: 8px
+  }
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+
+  span{
+    margin-top: 10px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}

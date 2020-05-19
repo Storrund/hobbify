@@ -40,6 +40,6 @@ export class SidebarComponent implements OnInit {
     }
 
     onFindFriends() {
-
+        this.router.navigate(['/profile']);
     }
 }

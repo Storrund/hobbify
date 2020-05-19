@@ -12,6 +12,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/api/profile", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProfileController {
@@ -40,4 +43,11 @@ public class ProfileController {
         return new ResponseEntity<>(profileVo, HttpStatus.OK);
     }
 
+
+    @RequestMapping(value="/search/{name}/{limit}/{offset}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    public @ResponseBody
+    ResponseEntity<?> getAllByName(@PathVariable String name, @PathVariable int limit, @PathVariable int offset) {
+        return new ResponseEntity<>(this.profileService.getAllByName(name, limit, offset), HttpStatus.OK);
+    }
 }

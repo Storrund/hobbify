@@ -1,0 +1,17 @@
+
+<div class="content">
+    <h1>HOBBIFY</h1>
+    <div *ngIf="profile" class="sidebar">
+        <hobbify-profile-icon
+                [firstName]="profile.firstName"
+                [lastName]="profile.lastName"
+                [size]="'20'"></hobbify-profile-icon>
+        <span>{{profile.firstName}} {{profile.lastName}}</span>
+    </div>
+
+    <div class="child">
+        <button pButton class="ui-button-secondary" (click)="home()" label="HOME"></button>
+        <button pButton class="ui-button-secondary" (click)="logout()" label="LOG OUT"></button>
+    </div>
+</div>
+

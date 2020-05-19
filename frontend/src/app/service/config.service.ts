@@ -49,6 +49,10 @@ export class ConfigService {
     return this._api_url + '/profile';
   }
 
+  get profile_friend_url(): string {
+    return this._api_url + '/profile-friend';
+  }
+
   get post_url(): string {
     return this._api_url + '/post';
   }

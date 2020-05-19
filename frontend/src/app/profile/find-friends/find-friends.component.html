@@ -1,0 +1,16 @@
+<div class="content">
+    <input pInputText [(ngModel)]="name" class="content-input" placeholder="Search..." (input)="onSearchChange($event.target.value)"/>
+
+    <div class="results">
+        <div *ngFor="let profile of profileSearchResult">
+            <div *ngIf="currentProfile.uuid !== profile.uuid">
+                <hobbify-profile
+                        [userProfile]="profile"
+                        [currentProfile]="currentProfile"
+                ></hobbify-profile>
+            </div>
+        </div>
+    </div>
+
+    <button *ngIf="isMore()" pButton class="ui-button-secondary load-posts-button" label="Load more profiles..." (click)="onLoadProfiles()"></button>
+</div>

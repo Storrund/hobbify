@@ -22,7 +22,7 @@ export class ProfileSetupGuard implements CanActivate {
         return new Observable<boolean>(observer => {
             if (state.url.includes('/auth')) {
                 observer.next(true);
-            } else if (state.url.includes('/profile')) {
+            } else if (state.url.includes('/profile-setup')) {
                 this.userService.getCurrentUser().subscribe(user => {
                     if (user) {
                         this.profileService.getProfileByUserUuid(user.uuid).subscribe(profile => {
@@ -41,7 +41,7 @@ export class ProfileSetupGuard implements CanActivate {
                             if (profile) {
                                 observer.next(true);
                             } else {
-                                this.router.navigate(['/profile']);
+                                this.router.navigate(['/profile-setup']);
                                 observer.next(false);
                             }
                         });
