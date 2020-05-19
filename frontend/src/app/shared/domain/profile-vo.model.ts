@@ -4,6 +4,10 @@ export class ProfileVoModel {
 
     uuid: string;
 
+    firstName: string;
+
+    lastName: string;
+
     customUserUuid: string;
 
     hobbies: HobbyVoModel[];

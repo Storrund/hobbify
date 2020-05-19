@@ -33,8 +33,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
       email: [''],
       password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])],
-      firstname: [''],
-      lastname: ['']
     });
   }
 

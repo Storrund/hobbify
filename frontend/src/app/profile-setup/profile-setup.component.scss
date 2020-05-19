@@ -1,4 +1,17 @@
-.content{
+.content {
+  width: 100%;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.ui-g-6{
+  padding: 0 !important;
+
+  input{
+    width: 80%;
+    margin: auto;
+  }
 }

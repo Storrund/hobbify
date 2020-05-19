@@ -7,6 +7,11 @@ import java.util.Set;
 public class ProfileDTO {
 
     private String customUserUuid;
+
+    private String firstName;
+
+    private String lastName;
+
     private Set<HobbyVo> hobbies;
 
     public String getCustomUserUuid() {
@@ -15,6 +20,22 @@ public class ProfileDTO {
 
     public void setCustomUserUuid(String customUserUuid) {
         this.customUserUuid = customUserUuid;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Set<HobbyVo> getHobbies() {

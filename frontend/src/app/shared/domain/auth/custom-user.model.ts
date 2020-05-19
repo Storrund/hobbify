@@ -6,10 +6,6 @@ export class CustomUserModel {
 
     username: string;
 
-    firstName: string;
-
-    lastName: string;
-
     authorities: AuthorityModel[];
 
 }

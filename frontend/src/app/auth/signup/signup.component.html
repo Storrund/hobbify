@@ -5,15 +5,6 @@
   <div class="child">
     <p-messages *ngIf="this.message.length > 0" [(value)]="this.message"></p-messages>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
-      <div class="ui-g">
-        <div class="ui-g-6">
-          <input pInputText formControlName="firstname" placeholder="First Name">
-        </div>
-        <div class="ui-g-6">
-          <input pInputText formControlName="lastname" placeholder="Last Name">
-        </div>
-      </div>
-
       <input pInputText formControlName="username" placeholder="Username" required>
       <input pInputText formControlName="email" placeholder="Email" required>
       <input pInputText formControlName="password" placeholder="Password" required type="password">

@@ -31,6 +31,9 @@ public class ProfileDTOMapper {
         ProfileDTO profileDTO = new ProfileDTO();
         profileDTO.setCustomUserUuid(profile.getCustomUser().getUuid());
 
+        profileDTO.setFirstName(profile.getFirstName());
+        profileDTO.setLastName(profile.getLastName());
+
         Set<HobbyVo> hobbyVoList = new HashSet<>();
         for(Hobby hobby: profile.getHobbies()){
             hobbyVoList.add(this.hobbyVoMapper.getVoFromEntity(hobby));
@@ -45,6 +48,9 @@ public class ProfileDTOMapper {
 
         CustomUser customUser = this.userService.findByUuid(profileDTO.getCustomUserUuid());
         profile.setCustomUser(customUser);
+
+        profile.setFirstName(profileDTO.getFirstName());
+        profile.setLastName(profileDTO.getLastName());
 
         Set<Hobby> hobbySet = new HashSet<>();
         for(HobbyVo hobbyVo: profileDTO.getHobbies()){

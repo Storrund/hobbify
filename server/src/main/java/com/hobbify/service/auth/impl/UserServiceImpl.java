@@ -59,8 +59,6 @@ public class UserServiceImpl implements UserService {
     CustomUser customUser = new CustomUser();
     customUser.setUsername(userRequest.getUsername());
     customUser.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-    customUser.setFirstname(userRequest.getFirstname());
-    customUser.setLastname(userRequest.getLastname());
     List<Authority> auth = authService.findByName("ROLE_USER");
     customUser.setAuthorities(auth);
     this.userJPARepository.save(customUser);

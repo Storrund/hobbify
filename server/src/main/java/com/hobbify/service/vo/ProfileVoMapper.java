@@ -23,6 +23,9 @@ public class ProfileVoMapper {
         profileVo.setUuid(profile.getUuid());
         profileVo.setCustomUserUuid(profile.getCustomUser().getUuid());
 
+        profileVo.setFirstName(profile.getFirstName());
+        profileVo.setLastName(profile.getLastName());
+
         Set<HobbyVo> hobbyVoList = new HashSet<>();
         for(Hobby hobby: profile.getHobbies()){
             hobbyVoList.add(this.hobbyVoMapper.getVoFromEntity(hobby));

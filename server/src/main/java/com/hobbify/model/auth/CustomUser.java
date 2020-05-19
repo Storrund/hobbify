@@ -28,12 +28,6 @@ public class CustomUser extends BaseEntity implements UserDetails, Serializable 
   @Column(name = "password")
   private String password;
 
-  @Column(name = "firstname")
-  private String firstname;
-
-  @Column(name = "lastname")
-  private String lastname;
-
 
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(name = "user_authority",
@@ -55,23 +49,6 @@ public class CustomUser extends BaseEntity implements UserDetails, Serializable 
 
   public void setPassword(String password) {
     this.password = password;
-  }
-
-  public String getFirstname() {
-    return firstname;
-  }
-
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
-  }
-
-  public String getLastname() {
-    return lastname;
-  }
-
-  public void setLastname(String lastname) {
-
-    this.lastname = lastname;
   }
 
   public void setAuthorities(List<Authority> authorities) {

@@ -1,2 +1,16 @@
 
-<hobbify-hobby-list [hobbyMetadata]="hobbyMetadata" (submitSelected)="submit($event)"></hobbify-hobby-list>
+<div class="content">
+    <h1>Profile Setup</h1>
+    <form [formGroup]="formGroup">
+        <div class="ui-g">
+            <div class="ui-g-6">
+                <input pInputText formControlName="firstName" placeholder="First Name">
+            </div>
+            <div class="ui-g-6">
+                <input pInputText formControlName="lastName" placeholder="Last Name">
+            </div>
+        </div>
+    </form>
+
+    <hobbify-hobby-list [hobbyMetadata]="hobbyMetadata" (submitSelected)="submit($event)"></hobbify-hobby-list>
+</div>
