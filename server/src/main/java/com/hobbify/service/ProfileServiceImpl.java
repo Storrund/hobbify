@@ -41,5 +41,16 @@ public class ProfileServiceImpl implements ProfileService {
         return profileDTOMapper.getDtoFromEntity(profile);
     }
 
+    @Override
+    public Profile getByUuid(String uuid){
+        Profile profile = profileJPARepository.findByUuid(uuid);
+
+        if(profile == null){
+            return null;
+        }
+
+        return profile;
+    }
+
 
 }
