@@ -1,0 +1,36 @@
+
+.post{
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 0 20px;
+
+  .header{
+    margin-bottom: 10px;
+
+    .profile{
+      display: inline-block;
+    }
+
+    .header-content{
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+
+      .date{
+        font-size: 10px;
+        color:gray;
+      }
+
+      span{
+        margin-left: 10px;
+        font-weight: 400;
+        text-transform: capitalize !important;
+      }
+    }
+  }
+
+  .content{
+    color:gray;
+    font-size: 15px;
+  }
+}

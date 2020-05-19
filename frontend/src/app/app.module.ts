@@ -26,13 +26,13 @@ import {HobbyIconComponent} from './shared/components/hobby-icon/hobby-icon.comp
 import {HobbyCardComponent} from './profile-setup/hobby-list/hobby-card/hobby-card.component';
 import {ProfileService} from './service/profile.service';
 import {XhrInterceptor} from './auth/xhr-interceptor';
-import {CanDeactivate} from '@angular/router/src/utils/preactivation';
 import {ProfileSetupGuard} from './profile-setup/profile-setup-guard';
 import {CompositeRouteGuard} from './shared/composite-route-guard';
 import {SidebarComponent} from './main/sidebar/sidebar.component';
 import {HobbyFeedComponent} from './main/hobby-feed/hobby-feed.component';
 import {ProfileIconComponent} from './shared/components/profile-icon/profile-icon.component';
 import {HobbifyDatePipe} from './shared/components/date-pipe/hobbify-date.pipe';
+import {PostComponent} from './main/hobby-feed/post/post.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import {HobbifyDatePipe} from './shared/components/date-pipe/hobbify-date.pipe';
       SidebarComponent,
       HobbyFeedComponent,
       ProfileIconComponent,
-      HobbifyDatePipe
+      HobbifyDatePipe,
+      PostComponent
   ],
   imports: [
       BrowserAnimationsModule,

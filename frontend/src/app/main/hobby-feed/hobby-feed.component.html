@@ -25,27 +25,7 @@
 
         <div class="posts">
             <div *ngFor="let post of posts">
-                <div class="post">
-                    <div class="header">
-                        <div class="profile">
-                            <hobbify-profile-icon
-                                    [firstName]="post.firstName"
-                                    [lastName]="post.lastName"
-                                    [size]="'12'"></hobbify-profile-icon>
-                        </div>
-                        <div class="header-content">
-                            <div class="name">
-                                <span>{{post.firstName}} {{post.lastName}}</span>
-                            </div>
-                            <div class="date">
-                                <span>{{post.postDate | hobbifyDate}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <span>{{post.content}}</span>
-                    </div>
-                </div>
+                <hobbify-post [post]="post"></hobbify-post>
             </div>
         </div>
 
