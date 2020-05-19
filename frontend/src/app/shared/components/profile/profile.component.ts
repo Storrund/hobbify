@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProfileVoModel} from '../../domain/profile-vo.model';
 import {ProfileFriendDtoModel} from '../../domain/profile-friend-dto.model';
 import {ProfileFriendService} from '../../../service/profile-friend.service';
@@ -13,16 +13,21 @@ export class ProfileComponent implements OnInit {
     @Input() userProfile: ProfileVoModel;
     @Input() currentProfile: ProfileVoModel;
 
+    @Input() isRequest: boolean = false;
+
+    @Output() acceptFriendRequest = new EventEmitter();
+    @Output() sendFriendRequest = new EventEmitter();
+
     constructor(private profileFriendService: ProfileFriendService) {}
 
     ngOnInit() {
     }
 
     addFriend() {
-        const profileFriendDto: ProfileFriendDtoModel = new ProfileFriendDtoModel();
-        profileFriendDto.firstProfileUuid = this.currentProfile.uuid;
-        profileFriendDto.secondProfileUuid = this.userProfile.uuid;
+        this.sendFriendRequest.emit(this.userProfile);
+    }
 
-        this.profileFriendService.saveFriendRequest(profileFriendDto).subscribe();
+    accept() {
+        this.acceptFriendRequest.emit(this.userProfile);
     }
 }

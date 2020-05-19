@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from '../../service/profile.service';
 import {ProfileVoModel} from '../../shared/domain/profile-vo.model';
+import {ProfileFriendDtoModel} from '../../shared/domain/profile-friend-dto.model';
+import {ProfileFriendService} from '../../service/profile-friend.service';
 
 @Component({
     selector: 'hobbify-find-friends',
@@ -16,11 +18,25 @@ export class FindFriendsComponent implements OnInit {
 
     loadCount: number = 0;
 
-    constructor(private profileService: ProfileService) {}
+    constructor(private profileService: ProfileService,
+                private profileFriendService: ProfileFriendService) {}
 
     ngOnInit() {
         this.profileService.getUserProfile().subscribe(profile => {
             this.currentProfile = profile;
+        });
+    }
+
+    addFriend(event: ProfileVoModel) {
+        const profileFriendDto: ProfileFriendDtoModel = new ProfileFriendDtoModel();
+        profileFriendDto.firstProfileUuid = this.currentProfile.uuid;
+        profileFriendDto.secondProfileUuid = event.uuid;
+
+        this.profileFriendService.saveFriendRequest(profileFriendDto).subscribe(value => {
+            const index: number = this.profileSearchResult.indexOf(event);
+            if (index !== -1) {
+                this.profileSearchResult.splice(index, 1);
+            }
         });
     }
 

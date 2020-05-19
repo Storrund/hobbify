@@ -7,10 +7,17 @@
                 [lastName]="profile.lastName"
                 [size]="'20'"></hobbify-profile-icon>
         <span>{{profile.firstName}} {{profile.lastName}}</span>
+
+        <div class="sidebar-buttons">
+            <button pButton class="ui-button-secondary" (click)="onSidebarOption(1)" label="Find Friends" [ngClass]="{'active':sidebarSelection == 1}"></button>
+            <button pButton class="ui-button-secondary" (click)="onSidebarOption(2)" label="Friend Requests" [ngClass]="{'active':sidebarSelection == 2}"></button>
+            <button pButton class="ui-button-secondary" (click)="onSidebarOption(3)" label="Change Password" [ngClass]="{'active':sidebarSelection == 3}"></button>
+            <button pButton class="ui-button-secondary" (click)="onSidebarOption(4)" label="Change Topics" [ngClass]="{'active':sidebarSelection == 4}"></button>
+        </div>
     </div>
 
     <div class="child">
-        <button pButton class="ui-button-secondary" (click)="home()" label="HOME"></button>
+        <button pButton class="ui-button-secondary" (click)="onHome()" label="HOME"></button>
         <button pButton class="ui-button-secondary" (click)="logout()" label="LOG OUT"></button>
     </div>
 </div>

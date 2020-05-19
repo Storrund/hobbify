@@ -8,8 +8,14 @@ import {HobbyVoModel} from '../shared/domain/hobby-vo.model';
 })
 export class ProfileMainComponent implements OnInit {
 
+    selectedIndex: number = 1;
+
     constructor() {}
 
     ngOnInit() {
+    }
+
+    onSidebarSelectionChange(index: number) {
+        this.selectedIndex = index;
     }
 }

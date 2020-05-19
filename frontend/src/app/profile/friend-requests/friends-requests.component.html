@@ -1,0 +1,9 @@
+<h1>Friend Requests</h1>
+<div *ngFor="let friendRequest of friendRequestsResults">
+    <hobbify-profile
+            [userProfile]="friendRequest.firstProfileVo"
+            [currentProfile]="currentProfile"
+            [isRequest]="true"
+            (acceptFriendRequest)="onAccept($event)"
+    ></hobbify-profile>
+</div>

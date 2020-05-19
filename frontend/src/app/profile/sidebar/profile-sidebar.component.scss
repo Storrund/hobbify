@@ -29,4 +29,26 @@
     font-weight: 500;
     text-transform: capitalize;
   }
+
+  .sidebar-buttons{
+    margin-top: 15px;
+
+    .active{
+      background-color: #ffc151;
+    }
+
+    button{
+      background-color: transparent;
+      border: 0;
+      width: 100%;
+    }
+
+    button:hover{
+      background-color: #ffc151;
+    }
+
+    button:focus{
+      box-shadow: none;
+    }
+  }
 }

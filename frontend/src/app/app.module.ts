@@ -38,6 +38,7 @@ import {ProfileMainComponent} from './profile/profile-main.component';
 import {FindFriendsComponent} from './profile/find-friends/find-friends.component';
 import {ProfileComponent} from './shared/components/profile/profile.component';
 import {ProfileFriendService} from './service/profile-friend.service';
+import {FriendsRequestsComponent} from './profile/friend-requests/friends-requests.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {ProfileFriendService} from './service/profile-friend.service';
       ProfileSidebarComponent,
       ProfileMainComponent,
       FindFriendsComponent,
-      ProfileComponent
+      ProfileComponent,
+      FriendsRequestsComponent
   ],
   imports: [
       BrowserAnimationsModule,

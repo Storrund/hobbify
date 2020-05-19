@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProfileDtoModel} from '../../shared/domain/profile-dto.model';
 import {AuthService} from '../../auth/auth.service';
 import {ProfileService} from '../../service/profile.service';
+
+
 
 @Component({
     selector: 'hobbify-profile-sidebar',
@@ -12,6 +14,10 @@ import {ProfileService} from '../../service/profile.service';
 export class ProfileSidebarComponent implements OnInit {
 
     profile: ProfileDtoModel;
+
+    @Input() sidebarSelection: number;
+    @Output() sidebarSelectionChange = new EventEmitter();
+
 
     constructor(
         private profileService: ProfileService,
@@ -26,8 +32,12 @@ export class ProfileSidebarComponent implements OnInit {
         });
     }
 
-    home() {
+    onHome() {
         this.router.navigate(['/home']);
+    }
+
+    onSidebarOption(index: number) {
+        this.sidebarSelectionChange.emit(index);
     }
 
     logout() {

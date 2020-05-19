@@ -1,4 +1,6 @@
 <div class="content">
+    <h1>Find Friends</h1>
+
     <input pInputText [(ngModel)]="name" class="content-input" placeholder="Search..." (input)="onSearchChange($event.target.value)"/>
 
     <div class="results">
@@ -7,6 +9,7 @@
                 <hobbify-profile
                         [userProfile]="profile"
                         [currentProfile]="currentProfile"
+                        (sendFriendRequest)="addFriend($event)"
                 ></hobbify-profile>
             </div>
         </div>

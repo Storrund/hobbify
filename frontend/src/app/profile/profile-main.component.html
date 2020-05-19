@@ -1,8 +1,14 @@
 <div class="content">
     <div class="ui-g-3 sidebar">
-        <hobbify-profile-sidebar></hobbify-profile-sidebar>
+        <hobbify-profile-sidebar
+            [(sidebarSelection)]="selectedIndex"></hobbify-profile-sidebar>
     </div>
     <div class="ui-g-9 hobby-feed">
-        <hobbify-find-friends></hobbify-find-friends>
+        <div *ngIf="selectedIndex === 1">
+            <hobbify-find-friends></hobbify-find-friends>
+        </div>
+        <div *ngIf="selectedIndex === 2">
+            <hobbify-friends-requests></hobbify-friends-requests>
+        </div>
     </div>
 </div>
