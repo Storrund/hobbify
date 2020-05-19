@@ -49,4 +49,8 @@ export class ConfigService {
     return this._api_url + '/profile';
   }
 
+  get post_url(): string {
+    return this._api_url + '/post';
+  }
+
 }

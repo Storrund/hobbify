@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class PostVo {
 
+    private String uuid;
+
     private String content;
 
     private String firstName;
@@ -11,6 +13,14 @@ public class PostVo {
     private String lastName;
 
     private LocalDateTime date;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public String getContent() {
         return content;
