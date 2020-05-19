@@ -38,4 +38,8 @@ export class SidebarComponent implements OnInit {
     selectHobbyFeed(hobby: HobbyVoModel) {
         this.selectedHobby.emit(hobby);
     }
+
+    onFindFriends() {
+
+    }
 }
