@@ -1,9 +1,8 @@
 <div class="content">
     <div class="ui-g-3 sidebar">
-        <hobbify-sidebar></hobbify-sidebar>
+        <hobbify-sidebar (selectedHobby)="selectHobbyFeed($event)"></hobbify-sidebar>
     </div>
-    <div class="ui-g-9">
-        <button pButton [routerLink]="['/change-password']">CHANGE PASSWORD</button>
-        <button pButton [routerLink]="['/profile']">PROFILE</button>
+    <div class="ui-g-9 hobby-feed">
+        <hobbify-hobby-feed [hobby]="selectedHobbyFeed"></hobbify-hobby-feed>
     </div>
 </div>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService, UserService} from '../service';
 import {Router} from '@angular/router';
 import {HobbyMetadataService} from '../service/hobby-metadata.service';
+import {HobbyVoModel} from '../shared/domain/hobby-vo.model';
 
 @Component({
     selector: 'hobbify-main',
@@ -10,14 +11,15 @@ import {HobbyMetadataService} from '../service/hobby-metadata.service';
 })
 export class MainComponent implements OnInit {
 
-    constructor(
-        private userService: UserService,
-        private authService: AuthService,
-        private hobbyMetadataService: HobbyMetadataService,
-        private router: Router
-    ) {
-    }
+    selectedHobbyFeed: HobbyVoModel;
+
+    constructor() {}
 
     ngOnInit() {
+    }
+
+
+    selectHobbyFeed(event: HobbyVoModel) {
+        this.selectedHobbyFeed = event;
     }
 }

@@ -30,6 +30,7 @@ import {CanDeactivate} from '@angular/router/src/utils/preactivation';
 import {ProfileSetupGuard} from './profile-setup/profile-setup-guard';
 import {CompositeRouteGuard} from './shared/composite-route-guard';
 import {SidebarComponent} from './main/sidebar/sidebar.component';
+import {HobbyFeedComponent} from './main/hobby-feed/hobby-feed.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {SidebarComponent} from './main/sidebar/sidebar.component';
       HobbyListComponent,
       HobbyIconComponent,
       HobbyCardComponent,
-      SidebarComponent
+      SidebarComponent,
+      HobbyFeedComponent
   ],
   imports: [
       BrowserAnimationsModule,

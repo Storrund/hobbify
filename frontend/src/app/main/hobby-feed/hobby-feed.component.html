@@ -1,0 +1,23 @@
+<div class="content">
+    <div *ngIf="hobby">
+
+        <div class="title">
+            <hobbify-hobby-icon
+                    [iconTag]="hobby.iconTag"
+                    [size]="'15'"
+                    [defaultColor]="'white'"
+                    [backgroundColor]="'red'"
+                    [borderColor]="'white'"></hobbify-hobby-icon>
+            <h1>{{hobby.name}} Feed</h1>
+        </div>
+
+        <div class="form">
+            <h3>New Post</h3>
+
+            <textarea pInputTextarea [(ngModel)]="content" class="content-input" placeholder="Content"></textarea>
+            <button pButton class="ui-button-secondary" label="Post" (click)="onSubmit()"></button>
+        </div>
+    </div>
+</div>
+
+

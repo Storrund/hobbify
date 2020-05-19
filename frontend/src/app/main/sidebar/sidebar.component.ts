@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from '../../service';
 import {Router} from '@angular/router';
 import {ProfileService} from '../../service/profile.service';
@@ -13,6 +13,8 @@ import {HobbyVoModel} from '../../shared/domain/hobby-vo.model';
 export class SidebarComponent implements OnInit {
 
     profile: ProfileDtoModel;
+
+    @Output() selectedHobby = new EventEmitter();
 
     constructor(
         private profileService: ProfileService,
@@ -33,7 +35,7 @@ export class SidebarComponent implements OnInit {
         });
     }
 
-    selectHobbyFeed(hobby: HobbyVoModel[]) {
-
+    selectHobbyFeed(hobby: HobbyVoModel) {
+        this.selectedHobby.emit(hobby);
     }
 }
