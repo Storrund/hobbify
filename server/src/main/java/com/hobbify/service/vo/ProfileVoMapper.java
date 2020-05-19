@@ -32,6 +32,8 @@ public class ProfileVoMapper {
         }
         profileVo.setHobbies(hobbyVoList);
 
+        profileVo.setDescription(profile.getDescription());
+
         return profileVo;
     }
 }

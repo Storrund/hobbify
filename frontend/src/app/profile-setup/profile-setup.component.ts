@@ -20,6 +20,7 @@ export class ProfileSetupComponent implements OnInit {
     hobbyMetadata: HobbyMetadataVoModel;
 
     formGroup: FormGroup;
+    description: string;
 
     constructor(
         private hobbyMetadataService: HobbyMetadataService,
@@ -57,6 +58,7 @@ export class ProfileSetupComponent implements OnInit {
                 profileDto.hobbies = event;
                 profileDto.firstName = this.formGroup.controls['firstName'].value;
                 profileDto.lastName = this.formGroup.controls['lastName'].value;
+                profileDto.description = this.description;
 
                 return this.profileService.saveProfile(profileDto);
             })).subscribe(data => {

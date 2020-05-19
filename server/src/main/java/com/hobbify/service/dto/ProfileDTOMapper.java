@@ -58,6 +58,8 @@ public class ProfileDTOMapper {
         }
         profile.setHobbies(hobbySet);
 
+        profile.setDescription(profileDTO.getDescription());
+
         return profile;
     }
 

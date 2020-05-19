@@ -11,4 +11,6 @@ export class ProfileVoModel {
     customUserUuid: string;
 
     hobbies: HobbyVoModel[];
+
+    description: string;
 }

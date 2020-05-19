@@ -10,6 +10,11 @@
                 <input pInputText formControlName="lastName" placeholder="Last Name">
             </div>
         </div>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <textarea pInputTextarea [(ngModel)]="description" class="content-input" placeholder="Write your description here..."></textarea>
+            </div>
+        </div>
     </form>
 
     <hobbify-hobby-list [hobbyMetadata]="hobbyMetadata" (submitSelected)="submit($event)"></hobbify-hobby-list>

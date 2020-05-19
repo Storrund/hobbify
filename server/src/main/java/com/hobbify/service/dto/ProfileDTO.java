@@ -14,6 +14,8 @@ public class ProfileDTO {
 
     private Set<HobbyVo> hobbies;
 
+    private String description;
+
     public String getCustomUserUuid() {
         return customUserUuid;
     }
@@ -44,5 +46,13 @@ public class ProfileDTO {
 
     public void setHobbies(Set<HobbyVo> hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

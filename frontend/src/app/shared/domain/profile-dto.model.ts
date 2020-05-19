@@ -9,4 +9,6 @@ export class ProfileDtoModel {
     lastName: string;
 
     hobbies: HobbyVoModel[];
+
+    description: string;
 }

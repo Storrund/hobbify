@@ -14,6 +14,8 @@ public class ProfileVo {
 
     private Set<HobbyVo> hobbies;
 
+    private String description;
+
     public String getUuid() {
         return uuid;
     }
@@ -52,5 +54,13 @@ public class ProfileVo {
 
     public void setHobbies(Set<HobbyVo> hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

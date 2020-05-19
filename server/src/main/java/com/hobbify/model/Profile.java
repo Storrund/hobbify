@@ -27,6 +27,9 @@ public class Profile extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "description")
+    private String description;
+
     public CustomUser getCustomUser() {
         return customUser;
     }
@@ -57,5 +60,13 @@ public class Profile extends BaseEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
