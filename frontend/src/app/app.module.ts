@@ -32,6 +32,7 @@ import {CompositeRouteGuard} from './shared/composite-route-guard';
 import {SidebarComponent} from './main/sidebar/sidebar.component';
 import {HobbyFeedComponent} from './main/hobby-feed/hobby-feed.component';
 import {ProfileIconComponent} from './shared/components/profile-icon/profile-icon.component';
+import {HobbifyDatePipe} from './shared/components/date-pipe/hobbify-date.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {ProfileIconComponent} from './shared/components/profile-icon/profile-ico
       HobbyCardComponent,
       SidebarComponent,
       HobbyFeedComponent,
-      ProfileIconComponent
+      ProfileIconComponent,
+      HobbifyDatePipe
   ],
   imports: [
       BrowserAnimationsModule,
