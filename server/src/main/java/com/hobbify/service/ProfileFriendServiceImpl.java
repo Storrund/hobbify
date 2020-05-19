@@ -46,7 +46,10 @@ public class ProfileFriendServiceImpl implements ProfileFriendService{
     @Transactional
     @Override
     public ProfileFriendDTO save(ProfileFriendDTO profileFriendDTO){
-        ProfileFriend profileFriend = profileFriendDTOMapper.getEntityFromDto(profileFriendDTO);
+        Profile firstProfile = this.profileService.getByUuid(profileFriendDTO.getFirstProfileUuid());
+        Profile secondProfile = this.profileService.getByUuid(profileFriendDTO.getSecondProfileUuid());
+
+        ProfileFriend profileFriend = profileFriendDTOMapper.getEntityFromDto(firstProfile, secondProfile);
         profileFriendJPARepository.save(profileFriend);
 
         return profileFriendDTO;
@@ -94,6 +97,11 @@ public class ProfileFriendServiceImpl implements ProfileFriendService{
                 .collect(Collectors.toList());
 
         return profileVoList;
+    }
+
+    @Override
+    public ProfileFriend isFriend(String firstProfileUuid, String secondProfileUuid){
+        return this.profileFriendJPARepository.findByFirstProfileUuidAndSecondProfileUuidAndAccepted(firstProfileUuid, secondProfileUuid, true);
     }
 
 }

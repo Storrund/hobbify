@@ -5,6 +5,8 @@ import com.hobbify.repository.common.BaseRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 
+import java.util.List;
+
 public interface ProfileFriendJPARepository extends BaseRepository<ProfileFriend> {
 
     ProfileFriend findByUuid(String uuid);
@@ -12,5 +14,7 @@ public interface ProfileFriendJPARepository extends BaseRepository<ProfileFriend
     Slice<ProfileFriend> findBySecondProfileUuidAndAccepted(String profileUuid, boolean accepted, Pageable pageable);
 
     Slice<ProfileFriend> findByFirstProfileUuidAndAccepted(String profileUuid, boolean accepted, Pageable pageable);
+
+    ProfileFriend findByFirstProfileUuidAndSecondProfileUuidAndAccepted(String firstProfileUuid, String secondProfileUuid, boolean accepted);
 
 }

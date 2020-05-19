@@ -46,7 +46,7 @@ export class FindFriendsComponent implements OnInit {
         }
 
         if (searchValue.length > 2) {
-            this.profileService.findAllByName(searchValue, 10, 0).subscribe(profiles => {
+            this.profileService.findAllByName(this.currentProfile.uuid, searchValue, 10, 0).subscribe(profiles => {
                 this.profileSearchResult = profiles;
                 this.loadCount = 1;
             });
@@ -54,7 +54,7 @@ export class FindFriendsComponent implements OnInit {
     }
 
     onLoadProfiles() {
-        this.profileService.findAllByName(this.name, 10, this.profileSearchResult.length).subscribe(profiles => {
+        this.profileService.findAllByName(this.currentProfile.uuid, this.name, 10, this.profileSearchResult.length).subscribe(profiles => {
             this.profileSearchResult = [...this.profileSearchResult, ...profiles];
             this.loadCount++;
         });

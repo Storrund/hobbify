@@ -44,10 +44,10 @@ public class ProfileController {
     }
 
 
-    @RequestMapping(value="/search/{name}/{limit}/{offset}", method = RequestMethod.GET)
+    @RequestMapping(value="/search/{profileUuid}/{name}/{limit}/{offset}", method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     public @ResponseBody
-    ResponseEntity<?> getAllByName(@PathVariable String name, @PathVariable int limit, @PathVariable int offset) {
-        return new ResponseEntity<>(this.profileService.getAllByName(name, limit, offset), HttpStatus.OK);
+    ResponseEntity<?> getAllByName(@PathVariable String profileUuid, @PathVariable String name, @PathVariable int limit, @PathVariable int offset) {
+        return new ResponseEntity<>(this.profileService.getAllByName(profileUuid, name, limit, offset), HttpStatus.OK);
     }
 }

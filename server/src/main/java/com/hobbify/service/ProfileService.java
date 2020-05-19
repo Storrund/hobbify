@@ -12,7 +12,7 @@ public interface ProfileService {
 
     ProfileVo getByUserUuid(String userUuid);
 
-    List<ProfileVo> getAllByName(String name, int limit, int offset);
+    List<ProfileVo> getAllByName(String profileUuid, String name, int limit, int offset);
 
     Profile getByUuid(String uuid);
 

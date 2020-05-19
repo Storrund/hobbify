@@ -1,6 +1,8 @@
 package com.hobbify.service;
 
 import com.hobbify.model.Profile;
+import com.hobbify.model.ProfileFriend;
+import com.hobbify.repository.ProfileFriendJPARepository;
 import com.hobbify.repository.ProfileJPARepository;
 import com.hobbify.repository.ProfilePageRequester;
 import com.hobbify.service.dto.ProfileDTO;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,13 +26,17 @@ public class ProfileServiceImpl implements ProfileService {
     private final ProfileDTOMapper profileDTOMapper;
     private final ProfileVoMapper profileVoMapper;
 
+    private final ProfileFriendJPARepository profileFriendJPARepository;
+
     public ProfileServiceImpl(
             ProfileJPARepository profileJPARepository,
             ProfileDTOMapper profileDTOMapper,
-            ProfileVoMapper profileVoMapper){
+            ProfileVoMapper profileVoMapper,
+            ProfileFriendJPARepository profileFriendJPARepository){
         this.profileJPARepository = profileJPARepository;
         this.profileDTOMapper = profileDTOMapper;
         this.profileVoMapper = profileVoMapper;
+        this.profileFriendJPARepository = profileFriendJPARepository;
     }
 
     @Transactional
@@ -54,28 +61,28 @@ public class ProfileServiceImpl implements ProfileService {
 
 
     @Override
-    public List<ProfileVo> getAllByName(String name, int limit, int offset){
+    public List<ProfileVo> getAllByName(String profileUuid, String name, int limit, int offset){
         List<String> searchName = Arrays.asList(name.split(" "));
 
         List<ProfileVo> profileVoList;
         if(searchName.size() > 1){
-            profileVoList = this.getAllByFirstNameOrLastName(searchName.get(0), searchName.get(1), limit, offset);
+            profileVoList = this.getAllByFirstNameOrLastName(profileUuid, searchName.get(0), searchName.get(1), limit, offset);
         }else{
-            profileVoList = this.getAllByFirstNameOrLastName(searchName.get(0), "", limit, offset);
+            profileVoList = this.getAllByFirstNameOrLastName(profileUuid, searchName.get(0), "", limit, offset);
         }
 
         if(profileVoList.isEmpty()){
             if(searchName.size() > 1){
-                profileVoList = this.getAllByFirstNameOrLastName(searchName.get(1), searchName.get(0), limit, offset);
+                profileVoList = this.getAllByFirstNameOrLastName(profileUuid, searchName.get(1), searchName.get(0), limit, offset);
             }else{
-                profileVoList = this.getAllByFirstNameOrLastName("", searchName.get(0), limit, offset);
+                profileVoList = this.getAllByFirstNameOrLastName(profileUuid, "", searchName.get(0), limit, offset);
             }
         }
 
         return profileVoList;
     }
 
-    private List<ProfileVo> getAllByFirstNameOrLastName(String firstName, String lastName, int limit, int offset){
+    private List<ProfileVo> getAllByFirstNameOrLastName(String profileUuid, String firstName, String lastName, int limit, int offset){
         Pageable pageable = new ProfilePageRequester(limit, offset);
 
         Slice<Profile> profileSlice = profileJPARepository.findByFirstNameLikeOrLastNameLike(firstName, lastName, pageable);
@@ -86,7 +93,17 @@ public class ProfileServiceImpl implements ProfileService {
                 .map(profileVoMapper::getVoFromEntity)
                 .collect(Collectors.toList());
 
-        return profileVoList;
+        List<ProfileVo> resultProfileList = new ArrayList<>();
+        for(ProfileVo profileVo: profileVoList){
+            ProfileFriend profileFriend = this.profileFriendJPARepository.findByFirstProfileUuidAndSecondProfileUuidAndAccepted(profileUuid, profileVo.getUuid(), true);
+            ProfileFriend inverseProfileFriend = this.profileFriendJPARepository.findByFirstProfileUuidAndSecondProfileUuidAndAccepted(profileVo.getUuid(), profileUuid, true);
+
+            if(profileFriend == null && inverseProfileFriend == null){
+                resultProfileList.add(profileVo);
+            }
+        }
+
+        return resultProfileList;
     }
 
 
