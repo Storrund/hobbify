@@ -15,7 +15,11 @@ export class HobbyIconComponent implements OnInit {
 
     @Input() isSelected: boolean;
 
+    @Input() defaultColor: string = 'black';
+
     @Input() borderColor: string = 'black';
+
+    @Input() backgroundColor: string = 'white';
 
     constructor() {}
 
