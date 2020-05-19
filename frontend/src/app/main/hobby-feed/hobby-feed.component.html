@@ -27,12 +27,21 @@
             <div *ngFor="let post of posts">
                 <div class="post">
                     <div class="header">
-                        <hobbify-profile-icon
-                            [firstName]="post.firstName"
-                            [lastName]="post.lastName"
-                            [size]="'12'"></hobbify-profile-icon>
-                        <span>{{post.firstName}}</span>
-                        <span>{{post.lastName}}</span>
+                        <div class="profile">
+                            <hobbify-profile-icon
+                                    [firstName]="post.firstName"
+                                    [lastName]="post.lastName"
+                                    [size]="'12'"></hobbify-profile-icon>
+                        </div>
+                        <div class="header-content">
+                            <div class="name">
+                                <span>{{post.firstName}}</span>
+                                <span>{{post.lastName}}</span>
+                            </div>
+                            <div class="date">
+                                <span>{{post.postDate | hobbifyDate}}</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="content">
                         <span>{{post.content}}</span>
@@ -40,6 +49,8 @@
                 </div>
             </div>
         </div>
+
+        <button pButton class="ui-button-secondary load-posts-button" label="Load more posts..." (click)="onLoadPosts()"></button>
     </div>
 </div>
 

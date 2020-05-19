@@ -19,7 +19,7 @@
 
 .action-bar{
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   button{
     width: 45%;
@@ -88,10 +88,25 @@
   .header{
     margin-bottom: 10px;
 
-    span{
-      margin-left: 10px;
-      font-weight: 400;
-      text-transform: capitalize !important;
+    .profile{
+      display: inline-block;
+    }
+
+    .header-content{
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+
+      .date{
+        font-size: 10px;
+        color:gray;
+      }
+
+      span{
+        margin-left: 10px;
+        font-weight: 400;
+        text-transform: capitalize !important;
+      }
     }
   }
 
@@ -99,4 +114,8 @@
     color:gray;
     font-size: 15px;
   }
+}
+
+.load-posts-button{
+  width: 70%;
 }

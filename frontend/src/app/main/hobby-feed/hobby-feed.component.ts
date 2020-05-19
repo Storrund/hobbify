@@ -5,6 +5,7 @@ import {ProfileService} from '../../service/profile.service';
 import {HobbyVoModel} from '../../shared/domain/hobby-vo.model';
 import {PostDtoModel} from '../../shared/domain/post-dto.model';
 import {PostVoModel} from '../../shared/domain/post-vo.model';
+import {orderBy} from 'lodash';
 
 @Component({
     selector: 'hobbify-hobby-feed',
@@ -42,8 +43,9 @@ export class HobbyFeedComponent implements OnInit {
 
     loadPosts() {
         this.profileService.getUserProfile().subscribe(profile => {
-            this.postService.getAllByHobbyUuidAndProfileUuid(this.hobby.uuid, profile.uuid).subscribe(posts => {
-                this.posts = [...posts];
+            this.postService.getAllByHobbyUuidAndProfileUuid(this.hobby.uuid, profile.uuid, 5, this.posts.length).subscribe(posts => {
+                this.posts = [...this.posts, ...posts];
+                this.sortPosts();
             });
         });
     }
@@ -53,6 +55,7 @@ export class HobbyFeedComponent implements OnInit {
             const postDto = this.createPostDto();
             this.postService.savePost(postDto).subscribe(post => {
                 this.posts.push(post);
+                this.sortPosts();
                 this.postForm = false;
             });
         }
@@ -66,6 +69,10 @@ export class HobbyFeedComponent implements OnInit {
 
     }
 
+    onLoadPosts() {
+        this.loadPosts();
+    }
+
     createPostDto() {
         const postDto = new PostDtoModel();
         postDto.content = this.content;
@@ -75,5 +82,11 @@ export class HobbyFeedComponent implements OnInit {
         });
 
         return postDto;
+    }
+
+    private sortPosts() {
+        this.posts = orderBy(this.posts, [function (item) {
+            return item.postDate
+        }], ['desc']);
     }
 }
