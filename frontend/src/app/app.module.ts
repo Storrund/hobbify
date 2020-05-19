@@ -29,6 +29,7 @@ import {XhrInterceptor} from './auth/xhr-interceptor';
 import {CanDeactivate} from '@angular/router/src/utils/preactivation';
 import {ProfileSetupGuard} from './profile-setup/profile-setup-guard';
 import {CompositeRouteGuard} from './shared/composite-route-guard';
+import {SidebarComponent} from './main/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {CompositeRouteGuard} from './shared/composite-route-guard';
       ProfileSetupComponent,
       HobbyListComponent,
       HobbyIconComponent,
-      HobbyCardComponent
+      HobbyCardComponent,
+      SidebarComponent
   ],
   imports: [
       BrowserAnimationsModule,

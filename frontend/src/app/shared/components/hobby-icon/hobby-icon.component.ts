@@ -15,6 +15,8 @@ export class HobbyIconComponent implements OnInit {
 
     @Input() isSelected: boolean;
 
+    @Input() borderColor: string = 'black';
+
     constructor() {}
 
     ngOnInit() {

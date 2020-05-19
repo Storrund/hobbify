@@ -1,5 +1,9 @@
 <div class="content">
-    <button pButton [routerLink]="['/change-password']">CHANGE PASSWORD</button>
-    <button pButton (click)="logout()">SIGN OUT</button>
-    <button pButton [routerLink]="['/profile']">PROFILE</button>
+    <div class="ui-g-3 sidebar">
+        <hobbify-sidebar></hobbify-sidebar>
+    </div>
+    <div class="ui-g-9">
+        <button pButton [routerLink]="['/change-password']">CHANGE PASSWORD</button>
+        <button pButton [routerLink]="['/profile']">PROFILE</button>
+    </div>
 </div>

@@ -1,4 +1,14 @@
-.content{
+.content {
+  width: 100%;
+  text-align: center;
   display: flex;
-  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar{
+  background-color: #FAA916;
+}
+
+.ui-g-3{
+  padding: 0;
 }

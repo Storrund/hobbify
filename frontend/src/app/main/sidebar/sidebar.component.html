@@ -1,0 +1,20 @@
+
+<div class="content">
+    <h1>HOBBIFY</h1>
+    <div *ngIf="profile" class="sidebar">
+        <div *ngFor="let hobby of profile.hobbies">
+            <div class="hobby-button" (click)="selectHobbyFeed(hobby)">
+                <hobbify-hobby-icon
+                        [iconTag]="hobby.iconTag"
+                        [size]="'8'"
+                        [borderColor]="'white'"></hobbify-hobby-icon>
+                <span>{{hobby.name}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="child">
+        <button pButton class="ui-button-secondary" (click)="logout()" label="LOG OUT"></button>
+    </div>
+</div>
+

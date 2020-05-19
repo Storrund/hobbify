@@ -20,19 +20,4 @@ export class MainComponent implements OnInit {
 
     ngOnInit() {
     }
-
-    hasSignedIn() {
-        return !!this.userService.currentUser;
-    }
-
-    userName() {
-        const user = this.userService.currentUser;
-        return user.firstName + ' ' + user.lastName;
-    }
-
-    logout() {
-        this.authService.logout().subscribe(res => {
-            this.router.navigate(['/auth']);
-        });
-    }
 }
