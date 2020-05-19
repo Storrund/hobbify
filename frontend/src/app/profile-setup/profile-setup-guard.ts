@@ -41,6 +41,7 @@ export class ProfileSetupGuard implements CanActivate {
                             if (profile) {
                                 observer.next(true);
                             } else {
+                                this.router.navigate(['/profile']);
                                 observer.next(false);
                             }
                         });
