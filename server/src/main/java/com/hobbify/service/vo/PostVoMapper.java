@@ -11,7 +11,7 @@ public class PostVoMapper {
 
         postVo.setUuid(post.getUuid());
         postVo.setContent(post.getContent());
-        postVo.setDate(post.getDate());
+        postVo.setPostDate(post.getPostDate());
         postVo.setFirstName(post.getProfile().getCustomUser().getFirstname());
         postVo.setLastName(post.getProfile().getCustomUser().getLastname());
 

@@ -2,15 +2,18 @@ package com.hobbify.service;
 
 import com.hobbify.model.Post;
 import com.hobbify.repository.PostJPARepository;
+import com.hobbify.repository.PostPageRequester;
 import com.hobbify.service.dto.PostDTO;
 import com.hobbify.service.dto.PostDTOMapper;
 import com.hobbify.service.vo.PostVo;
 import com.hobbify.service.vo.PostVoMapper;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -39,17 +42,16 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostVo> getAllByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid){
-        List<Post> postList = postJPARepository.findAllByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid);
+    public List<PostVo> getLastByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid, int limit, int offset){
+        Pageable pageable = new PostPageRequester(limit, offset);
 
-        if(postList == null){
-            return null;
-        }
+        Slice<Post> test = postJPARepository.findByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid, pageable);
 
-        List<PostVo> postVoList = new ArrayList<>();
-        for(Post post : postList){
-            postVoList.add(postVoMapper.getVoFromEntity(post));
-        }
+        List<PostVo> postVoList = test
+                .getContent()
+                .stream()
+                .map(postVoMapper::getVoFromEntity)
+                .collect(Collectors.toList());
 
         return postVoList;
     }

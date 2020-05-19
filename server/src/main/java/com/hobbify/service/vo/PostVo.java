@@ -12,7 +12,7 @@ public class PostVo {
 
     private String lastName;
 
-    private LocalDateTime date;
+    private LocalDateTime postDate;
 
     public String getUuid() {
         return uuid;
@@ -46,11 +46,11 @@ public class PostVo {
         this.lastName = lastName;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getPostDate() {
+        return postDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setPostDate(LocalDateTime postDate) {
+        this.postDate = postDate;
     }
 }

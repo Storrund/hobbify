@@ -2,11 +2,11 @@ package com.hobbify.repository;
 
 import com.hobbify.model.Post;
 import com.hobbify.repository.common.BaseRepository;
-
-import java.util.List;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 public interface PostJPARepository extends BaseRepository<Post> {
 
-    List<Post> findAllByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid);
+    Slice<Post> findByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid, Pageable pageable);
 
 }

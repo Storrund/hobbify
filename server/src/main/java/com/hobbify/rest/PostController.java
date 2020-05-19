@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,11 +34,11 @@ public class PostController {
         return new ResponseEntity<>(profileDtoSaved, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="/{hobbyUuid}/{profileUuid}", method = RequestMethod.GET)
+    @RequestMapping(value="/{hobbyUuid}/{profileUuid}/{limit}/{offset}", method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     public @ResponseBody
-    ResponseEntity<?> getProfileByUserUuid(@PathVariable String hobbyUuid, @PathVariable String profileUuid) {
-        List<PostVo> postVoList = this.postService.getAllByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid);
+    ResponseEntity<?> getLastByHobbyUuidAndProfileUuid(@PathVariable String hobbyUuid, @PathVariable String profileUuid, @PathVariable int limit, @PathVariable int offset) {
+        List<PostVo> postVoList = this.postService.getLastByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid, limit, offset);
         return new ResponseEntity<>(postVoList, HttpStatus.OK);
     }
 

@@ -22,7 +22,7 @@ public class Post extends BaseEntity {
     private Hobby hobby;
 
     @Column(name = "post_date")
-    private LocalDateTime date;
+    private LocalDateTime postDate;
 
     public Profile getProfile() {
         return profile;
@@ -48,11 +48,11 @@ public class Post extends BaseEntity {
         this.hobby = hobby;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getPostDate() {
+        return postDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setPostDate(LocalDateTime postDate) {
+        this.postDate = postDate;
     }
 }

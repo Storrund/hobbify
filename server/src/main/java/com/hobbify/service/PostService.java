@@ -9,5 +9,5 @@ public interface PostService {
 
     PostVo save(PostDTO postDTO);
 
-    List<PostVo> getAllByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid);
+    List<PostVo> getLastByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid, int limit, int offset);
 }

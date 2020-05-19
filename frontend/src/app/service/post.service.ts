@@ -27,7 +27,7 @@ export class PostService {
         return this.apiService.post(this.config.post_url, JSON.stringify(post), headers);
     }
 
-    getAllByHobbyUuidAndProfileUuid(hobbyUuid: string, profileUuid: string): Observable<PostVoModel[]> {
-        return this.apiService.get(this.config.post_url + '/' + hobbyUuid + '/' + profileUuid);
+    getAllByHobbyUuidAndProfileUuid(hobbyUuid: string, profileUuid: string, limit: number, offset: number): Observable<PostVoModel[]> {
+        return this.apiService.get(this.config.post_url + '/' + hobbyUuid + '/' + profileUuid + '/' + limit + '/' + offset);
     }
 }

@@ -10,5 +10,5 @@ export class PostVoModel {
 
     lastName: string;
 
-    date: string;
+    postDate: string;
 }
