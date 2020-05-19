@@ -35,8 +35,7 @@
                         </div>
                         <div class="header-content">
                             <div class="name">
-                                <span>{{post.firstName}}</span>
-                                <span>{{post.lastName}}</span>
+                                <span>{{post.firstName}} {{post.lastName}}</span>
                             </div>
                             <div class="date">
                                 <span>{{post.postDate | hobbifyDate}}</span>
@@ -50,7 +49,7 @@
             </div>
         </div>
 
-        <button pButton class="ui-button-secondary load-posts-button" label="Load more posts..." (click)="onLoadPosts()"></button>
+        <button *ngIf="posts.length > 0" pButton class="ui-button-secondary load-posts-button" label="Load more posts..." (click)="onLoadPosts()"></button>
     </div>
 </div>
 

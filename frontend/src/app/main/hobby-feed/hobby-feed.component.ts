@@ -22,6 +22,7 @@ export class HobbyFeedComponent implements OnInit {
     @Input('hobby')
     set hobby(hobby: HobbyVoModel) {
         this._hobby = hobby;
+        this.posts = [];
         if (hobby) {
             this.loadPosts();
         }
