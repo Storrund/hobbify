@@ -28,4 +28,25 @@ public class ProfileFriendController {
         return new ResponseEntity<>(profileFriendService.save(profileFriendDTO), HttpStatus.CREATED);
     }
 
+    @RequestMapping(value="/{profileFriendUuid}", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    public @ResponseBody
+    ResponseEntity<?> accept(@PathVariable String profileFriendUuid) {
+        return new ResponseEntity<>(profileFriendService.accept(profileFriendUuid), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="/requests/{profileUuid}/{limit}/{offset}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    public @ResponseBody
+    ResponseEntity<?> getFriendsRequests(@PathVariable String profileUuid, @PathVariable int limit, @PathVariable int offset) {
+        return new ResponseEntity<>(this.profileFriendService.getFriendsRequests(profileUuid, limit, offset), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/{profileUuid}/{limit}/{offset}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
+    public @ResponseBody
+    ResponseEntity<?> getFriends(@PathVariable String profileUuid, @PathVariable int limit, @PathVariable int offset) {
+        return new ResponseEntity<>(this.profileFriendService.getFriends(profileUuid, limit, offset), HttpStatus.OK);
+    }
+
 }

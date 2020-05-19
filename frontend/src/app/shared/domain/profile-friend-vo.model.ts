@@ -1,10 +1,14 @@
-import {HobbyVoModel} from './hobby-vo.model';
+import {ProfileVoModel} from './profile-vo.model';
 
 export class ProfileFriendVoModel {
 
-    firstProfileUuid: string;
+    uuid: string;
 
-    secondProfileUuid: string;
+    firstProfile: string;
+
+    secondProfile: string;
 
     accepted: boolean;
+
+    firstProfileVo: ProfileVoModel;
 }
