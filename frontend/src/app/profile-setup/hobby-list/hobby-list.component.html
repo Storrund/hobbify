@@ -7,16 +7,14 @@
         <div class="ui-g-10">
             <div *ngFor="let category of hobbyMetadata.hobbyCategories">
                 <div class="category">
-                    <span class="category-name" [ngClass]="category.color">{{category.name}}</span>
-                    <div class="hobbies">
+                    <span class="category-name" [ngStyle]="{'color': category.color}">{{category.name}}</span>
                         <div *ngFor="let hobby of hobbyMetadata.hobbies[category.uuid]"
-                             (click)="select(hobby)">
+                             (click)="select(hobby)" style="display: inline-block;">
                             <hobbify-hobby-card
                                 [hobby]="hobby"
                                 [color]="category.color"
                                 [isSelected]="isSelected(hobby)">
                             </hobbify-hobby-card>
-                        </div>
                     </div>
                 </div>
             </div>

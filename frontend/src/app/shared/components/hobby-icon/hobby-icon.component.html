@@ -1,10 +1,11 @@
 
 <div class="hobby-icon"
      [ngStyle]="{'height': size * 3.43 + 'px',
+                 'width': size * 3.43 + 'px',
                  'padding': size + 'px',
-                 'font-size': size + 'px',
+                 'font-size': size * 1.4 + 'px',
                  'border-color': isSelected ? color : borderColor,
                  'color': isSelected ? color : defaultColor,
                  'background-color': backgroundColor}">
-    <i class="fa fa-camera-retro fa-lg"></i>
+    <i class="{{iconTag}}"></i>
 </div>
