@@ -13,5 +13,10 @@
         <div *ngIf="selectedIndex === 3">
             <hobbify-change-password></hobbify-change-password>
         </div>
+        <div *ngIf="selectedIndex === 4">
+            <hobbify-profile-setup
+                    [edit]="true"
+            ></hobbify-profile-setup>
+        </div>
     </div>
 </div>

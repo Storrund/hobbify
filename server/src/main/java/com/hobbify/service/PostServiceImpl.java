@@ -1,17 +1,20 @@
 package com.hobbify.service;
 
 import com.hobbify.model.Post;
+import com.hobbify.model.Profile;
 import com.hobbify.repository.PostJPARepository;
 import com.hobbify.repository.PostPageRequester;
 import com.hobbify.service.dto.PostDTO;
 import com.hobbify.service.dto.PostDTOMapper;
 import com.hobbify.service.vo.PostVo;
 import com.hobbify.service.vo.PostVoMapper;
+import com.hobbify.service.vo.ProfileVo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,13 +26,17 @@ public class PostServiceImpl implements PostService {
     private PostDTOMapper postDTOMapper;
     private PostVoMapper postVoMapper;
 
+    private ProfileFriendService profileFriendService;
+
     public PostServiceImpl(
             PostJPARepository postJPARepository,
             PostDTOMapper postDTOMapper,
-            PostVoMapper postVoMapper){
+            PostVoMapper postVoMapper,
+            ProfileFriendService profileFriendService){
         this.postJPARepository = postJPARepository;
         this.postDTOMapper = postDTOMapper;
         this.postVoMapper = postVoMapper;
+        this.profileFriendService = profileFriendService;
     }
 
     @Transactional
@@ -45,7 +52,14 @@ public class PostServiceImpl implements PostService {
     public List<PostVo> getLastByHobbyUuidAndProfileUuid(String hobbyUuid, String profileUuid, int limit, int offset){
         Pageable pageable = new PostPageRequester(limit, offset);
 
-        Slice<Post> test = postJPARepository.findByHobbyUuidAndProfileUuid(hobbyUuid, profileUuid, pageable);
+        List<String> uuidList = new ArrayList<>();
+        uuidList.add(profileUuid);
+        List<ProfileVo> profileVoList = this.profileFriendService.getFriends(profileUuid, 100, 0);
+        for(ProfileVo profileVo: profileVoList){
+            uuidList.add(profileVo.getUuid());
+        }
+
+        Slice<Post> test = postJPARepository.findByHobbyUuidAndProfileUuidIn(hobbyUuid, uuidList, pageable);
 
         List<PostVo> postVoList = test
                 .getContent()
