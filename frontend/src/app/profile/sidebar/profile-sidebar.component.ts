@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {ProfileDtoModel} from '../../shared/domain/profile-dto.model';
 import {AuthService} from '../../auth/auth.service';
 import {ProfileService} from '../../service/profile.service';
@@ -22,7 +22,8 @@ export class ProfileSidebarComponent implements OnInit {
     constructor(
         private profileService: ProfileService,
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute
     ) {
     }
 

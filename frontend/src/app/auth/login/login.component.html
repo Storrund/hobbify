@@ -1,10 +1,10 @@
 <div class="content">
     <h1>HOBBIFY</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur mollis nisi eu egestas. </p>
+    <p>Brand new social network, based on hobbies and interests, made to link people all over the world!</p>
 
     <div class="child">
         <p-messages *ngIf="this.message.length > 0" [(value)]="this.message"></p-messages>
-        <p>Already have an account?</p>
+        <p class="message">Already have an account?</p>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="form">
             <input pInputText type="text" formControlName="username" placeholder="Username" required>
             <input pInputText type="text" formControlName="password" placeholder="Password" required type="password">

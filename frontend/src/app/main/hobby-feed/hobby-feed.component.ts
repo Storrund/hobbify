@@ -23,6 +23,7 @@ export class HobbyFeedComponent implements OnInit {
     set hobby(hobby: HobbyVoModel) {
         this._hobby = hobby;
         this.posts = [];
+        this.loadCount = 0;
         if (hobby) {
             this.loadPosts();
         }
@@ -32,6 +33,7 @@ export class HobbyFeedComponent implements OnInit {
 
     content: string;
     postForm: boolean = false;
+    loadCount: number = 0;
 
     constructor(
         private postService: PostService,
@@ -47,6 +49,7 @@ export class HobbyFeedComponent implements OnInit {
             this.postService.getAllByHobbyUuidAndProfileUuid(this.hobby.uuid, profile.uuid, 5, this.posts.length).subscribe(posts => {
                 this.posts = [...this.posts, ...posts];
                 this.sortPosts();
+                this.loadCount++;
             });
         });
     }
@@ -83,6 +86,10 @@ export class HobbyFeedComponent implements OnInit {
         });
 
         return postDto;
+    }
+
+    isMore(): boolean {
+        return this.posts.length >= this.loadCount * 5 && this.posts.length > 0;
     }
 
     private sortPosts() {

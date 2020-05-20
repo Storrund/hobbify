@@ -1,4 +1,7 @@
 <div class="content">
+    <div *ngIf="!hobby" class="hobby-not-selected">
+        <span class="note">Please select one of your topics from the left sidebar</span>
+    </div>
     <div *ngIf="hobby">
 
         <div class="title">
@@ -12,8 +15,12 @@
         </div>
 
         <div class="action-bar">
-            <button pButton class="ui-button-secondary" label="New Post" (click)="onPost()"></button>
-            <button pButton class="ui-button-secondary" label="Events" (click)="onEvent()"></button>
+            <div class="ui-g-6" [ngStyle]="{'padding-right': '15px', 'padding-left': '0'}">
+                <button pButton class="ui-button-secondary" label="New Post" (click)="onPost()"></button>
+            </div>
+            <div class="ui-g-6" [ngStyle]="{'padding-left': '15px', 'padding-right': '0'}">
+                <button pButton class="ui-button-secondary" label="Events" (click)="onEvent()"></button>
+            </div>
         </div>
 
         <div class="form" *ngIf="postForm">
@@ -23,13 +30,18 @@
             <button pButton class="ui-button-secondary" label="Post" (click)="onSubmit()"></button>
         </div>
 
-        <div class="posts">
+
+        <div *ngIf="posts.length === 0">
+            <span class="note">There isn't any posts yet!</span>
+        </div>
+
+        <div class="posts" *ngIf="posts.length > 0">
             <div *ngFor="let post of posts">
                 <hobbify-post [post]="post"></hobbify-post>
             </div>
         </div>
 
-        <button *ngIf="posts.length > 0" pButton class="ui-button-secondary load-posts-button" label="Load more posts..." (click)="onLoadPosts()"></button>
+        <button *ngIf="isMore()" pButton class="ui-button-secondary load-posts-button" label="Load more posts..." (click)="onLoadPosts()"></button>
     </div>
 </div>
 

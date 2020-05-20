@@ -3,6 +3,12 @@
 
     <input pInputText [(ngModel)]="name" class="content-input" placeholder="Search..." (input)="onSearchChange($event.target.value)"/>
 
+
+    <div *ngIf="profileSearchResult.length === 0 && name" style="margin-top: 20px;">
+        <span class="note">We couldn't find any person with that name!</span>
+    </div>
+
+
     <div class="results">
         <div *ngFor="let profile of profileSearchResult">
             <div *ngIf="currentProfile.uuid !== profile.uuid">

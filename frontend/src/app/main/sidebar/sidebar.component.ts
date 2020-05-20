@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
     profile: ProfileDtoModel;
 
+    selection: HobbyVoModel = null;
     @Output() selectedHobby = new EventEmitter();
 
     constructor(
@@ -36,10 +37,15 @@ export class SidebarComponent implements OnInit {
     }
 
     selectHobbyFeed(hobby: HobbyVoModel) {
+        this.selection = hobby;
         this.selectedHobby.emit(hobby);
     }
 
     onFindFriends() {
+        this.router.navigate(['/profile']);
+    }
+
+    onProfile() {
         this.router.navigate(['/profile']);
     }
 }

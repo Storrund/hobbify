@@ -1,10 +1,12 @@
 
 <div class="content">
     <h1>HOBBIFY</h1>
+    <p class="hobbify-description">Brand new social network, based on hobbies and interests, made to link people all over the world!</p>
+
     <div *ngIf="profile" class="sidebar">
         <p class="topics-text">YOUR TOPICS</p>
         <div *ngFor="let hobby of profile.hobbies">
-            <div class="hobby-button" (click)="selectHobbyFeed(hobby)">
+            <div class="hobby-button" (click)="selectHobbyFeed(hobby)" [ngClass]="{'active': (selection != null && selection.uuid == hobby.uuid)}">
                 <hobbify-hobby-icon
                         [iconTag]="hobby.iconTag"
                         [size]="'8'"
@@ -15,6 +17,13 @@
     </div>
 
     <div class="child">
+        <div class="profile-button" (click)="onProfile()">
+            <hobbify-profile-icon
+                    [firstName]="profile.firstName"
+                    [lastName]="profile.lastName"
+                    [size]="'13'"></hobbify-profile-icon>
+            <span>My profile</span>
+        </div>
         <button pButton class="ui-button-secondary" (click)="onFindFriends()" label="FIND FRIENDS"></button>
         <button pButton class="ui-button-secondary" (click)="logout()" label="LOG OUT"></button>
     </div>

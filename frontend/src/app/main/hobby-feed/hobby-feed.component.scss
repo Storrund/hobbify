@@ -8,6 +8,7 @@
   display: inline-flex;
   width: 100%;
   text-align: left;
+  margin-bottom: 15px;
 
   h1{
     text-align: left;
@@ -20,17 +21,17 @@
 .action-bar{
   margin-top: 10px;
   margin-bottom: 20px;
+  display: flex;
 
   button{
-    width: 45%;
-    border-radius: 15px;
+    width: 100%;
     padding: 12px;
-    margin: 0 10px;
     text-align: left;
     font-weight: bold;
-    background-color: transparent;
-    border: 2px solid black;
-    color: black;
+    display: block;
+    background-color: #f3f2f2;
+    border-radius: 15px;
+    border-color: white;
   }
 
   button:active{
@@ -82,4 +83,14 @@
 
 .load-posts-button{
   width: 70%;
+}
+
+.note{
+  color: gray;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.hobby-not-selected{
+  margin: auto;
 }

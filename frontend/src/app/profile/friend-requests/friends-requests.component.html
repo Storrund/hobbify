@@ -1,4 +1,9 @@
 <h1>Friend Requests</h1>
+
+<div *ngIf="friendRequestsResults.length === 0">
+    <span class="note">You don't have any friend requests!</span>
+</div>
+
 <div *ngFor="let friendRequest of friendRequestsResults">
     <hobbify-profile
             [userProfile]="friendRequest.firstProfileVo"
