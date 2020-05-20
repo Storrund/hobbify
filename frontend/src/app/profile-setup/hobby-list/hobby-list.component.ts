@@ -3,6 +3,7 @@ import {HobbyMetadataVoModel} from '../../shared/domain/hobby-metadata-vo.model'
 import {HobbyVoModel} from '../../shared/domain/hobby-vo.model';
 import {HobbyMetadataService} from '../../service/hobby-metadata.service';
 import {ProfileService} from '../../service/profile.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'hobbify-hobby-list',
@@ -13,6 +14,8 @@ export class HobbyListComponent implements OnInit{
 
     hobbyMetadata: HobbyMetadataVoModel;
     selectedHobbies: HobbyVoModel[] = [];
+
+    @Input() form: FormGroup;
 
     @Output() submitSelected = new EventEmitter<HobbyVoModel[]>();
     @Input() edit: boolean = false;

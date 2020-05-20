@@ -28,8 +28,8 @@
             <p class="note">Please select topics that have any minimum conection with you (you want to know more, you practice / love / do that thing etc.). This topics can be changed after profile setup.</p>
             <button pButton
                     class="ui-button-primary confirm-button"
-                    label="Confirm your topics of interest"
-                    (click)="submit()"></button>
+                    label="Confirm your profile"
+                    (click)="submit()" [disabled]="!edit && (!form.valid || selectedHobbies.length === 0)"></button>
         </div>
         <div class="ui-g-1"></div>
     </div>
