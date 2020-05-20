@@ -1,5 +1,6 @@
 package com.hobbify.service;
 
+import com.hobbify.model.Hobby;
 import com.hobbify.model.Profile;
 import com.hobbify.model.ProfileFriend;
 import com.hobbify.repository.ProfileFriendJPARepository;
@@ -7,6 +8,8 @@ import com.hobbify.repository.ProfileJPARepository;
 import com.hobbify.repository.ProfilePageRequester;
 import com.hobbify.service.dto.ProfileDTO;
 import com.hobbify.service.dto.ProfileDTOMapper;
+import com.hobbify.service.dto.ProfileUpdateDTO;
+import com.hobbify.service.vo.HobbyVo;
 import com.hobbify.service.vo.ProfileVo;
 import com.hobbify.service.vo.ProfileVoMapper;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +17,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,16 +27,20 @@ public class ProfileServiceImpl implements ProfileService {
     private final ProfileDTOMapper profileDTOMapper;
     private final ProfileVoMapper profileVoMapper;
 
+    private final HobbyService hobbyService;
+
     private final ProfileFriendJPARepository profileFriendJPARepository;
 
     public ProfileServiceImpl(
             ProfileJPARepository profileJPARepository,
             ProfileDTOMapper profileDTOMapper,
             ProfileVoMapper profileVoMapper,
+            HobbyService hobbyService,
             ProfileFriendJPARepository profileFriendJPARepository){
         this.profileJPARepository = profileJPARepository;
         this.profileDTOMapper = profileDTOMapper;
         this.profileVoMapper = profileVoMapper;
+        this.hobbyService = hobbyService;
         this.profileFriendJPARepository = profileFriendJPARepository;
     }
 
@@ -47,6 +52,38 @@ public class ProfileServiceImpl implements ProfileService {
 
         return profileVoMapper.getVoFromEntity(profile);
     }
+
+    @Transactional
+    @Override
+    public ProfileVo updateProfile(ProfileUpdateDTO profileUpdateDTO){
+        Profile profile = profileJPARepository.findByUuid(profileUpdateDTO.getUuid());
+
+        if(profileUpdateDTO.getDescription() != null && !profileUpdateDTO.getDescription().isEmpty()){
+            profile.setDescription(profileUpdateDTO.getDescription());
+        }
+
+        if(profileUpdateDTO.getFirstName() != null && !profileUpdateDTO.getFirstName().isEmpty()){
+            profile.setFirstName(profileUpdateDTO.getFirstName());
+        }
+
+        if(profileUpdateDTO.getLastName() != null && !profileUpdateDTO.getLastName().isEmpty()){
+            profile.setLastName(profileUpdateDTO.getLastName());
+        }
+
+        if(profileUpdateDTO.getHobbies() != null && !profileUpdateDTO.getHobbies().isEmpty()){
+            Set<Hobby> hobbySet = new HashSet<>();
+            for(HobbyVo hobbyVo: profileUpdateDTO.getHobbies()){
+                hobbySet.add(this.hobbyService.getHobbyByUuid(hobbyVo.getUuid()));
+            }
+            profile.setHobbies(hobbySet);
+            
+        }
+
+        profileJPARepository.save(profile);
+
+        return profileVoMapper.getVoFromEntity(profile);
+    }
+
 
     @Override
     public ProfileVo getByUserUuid(String userUuid){

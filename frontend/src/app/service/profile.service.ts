@@ -7,6 +7,7 @@ import {take} from 'rxjs/operators';
 import {ProfileDtoModel} from '../shared/domain/profile-dto.model';
 import {ProfileVoModel} from '../shared/domain/profile-vo.model';
 import { isEqual } from 'lodash';
+import {ProfileUpdateDtoModel} from '../shared/domain/profile-update-dto.model';
 
 @Injectable({
     providedIn: 'root'
@@ -42,6 +43,15 @@ export class ProfileService {
         });
 
         return this.apiService.post(this.config.profile_url, JSON.stringify(profile), headers);
+    }
+
+    updateProfile(profile: ProfileUpdateDtoModel): Observable<ProfileVoModel> {
+        const headers = new HttpHeaders({
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        });
+
+        return this.apiService.post(this.config.profile_url + '/update', JSON.stringify(profile), headers);
     }
 
     getProfileByUserUuid(userUuid: string): Observable<ProfileVoModel> {

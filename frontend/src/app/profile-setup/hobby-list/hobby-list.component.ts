@@ -1,20 +1,42 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HobbyMetadataVoModel} from '../../shared/domain/hobby-metadata-vo.model';
 import {HobbyVoModel} from '../../shared/domain/hobby-vo.model';
+import {HobbyMetadataService} from '../../service/hobby-metadata.service';
+import {ProfileService} from '../../service/profile.service';
 
 @Component({
     selector: 'hobbify-hobby-list',
     templateUrl: './hobby-list.component.html',
     styleUrls: ['./hobby-list.component.scss']
 })
-export class HobbyListComponent {
+export class HobbyListComponent implements OnInit{
 
-    @Input() hobbyMetadata: HobbyMetadataVoModel;
+    hobbyMetadata: HobbyMetadataVoModel;
     selectedHobbies: HobbyVoModel[] = [];
 
     @Output() submitSelected = new EventEmitter<HobbyVoModel[]>();
+    @Input() edit: boolean = false;
 
-    constructor() {}
+    constructor(private hobbyMetadataService: HobbyMetadataService,
+                private profileService: ProfileService) {}
+
+    ngOnInit() {
+        this.hobbyMetadataService.getHobbyMetadata().subscribe(data => {
+            this.hobbyMetadata = data;
+            if (this.edit) {
+                this.profileService.getUserProfile().subscribe(profile => {
+                    for(let category of this.hobbyMetadata.hobbyCategories){
+                        for(let hobby of this.hobbyMetadata.hobbies[category.uuid]){
+                            let foundItem = profile.hobbies.find(item => item.uuid === hobby.uuid);
+                            if (foundItem) {
+                                this.selectedHobbies.push(foundItem);
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
 
     select(hobby: HobbyVoModel) {
         if (this.selectedHobbies.find(item => item.uuid === hobby.uuid)) {

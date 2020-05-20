@@ -3,6 +3,7 @@ package com.hobbify.rest;
 import com.hobbify.model.Profile;
 import com.hobbify.service.ProfileService;
 import com.hobbify.service.dto.ProfileDTO;
+import com.hobbify.service.dto.ProfileUpdateDTO;
 import com.hobbify.service.vo.ProfileVo;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,14 @@ public class ProfileController {
     public @ResponseBody
     ResponseEntity<?> saveProfile(@RequestBody ProfileDTO profileDTO) {
         ProfileVo profileVo = profileService.save(profileDTO);
+        return new ResponseEntity<>(profileVo, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    public @ResponseBody
+    ResponseEntity<?> updateProfile(@RequestBody ProfileUpdateDTO profileUpdateDTO) {
+        ProfileVo profileVo = profileService.updateProfile(profileUpdateDTO);
         return new ResponseEntity<>(profileVo, HttpStatus.CREATED);
     }
 

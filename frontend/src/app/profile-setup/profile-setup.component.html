@@ -17,5 +17,7 @@
         </div>
     </form>
 
-    <hobbify-hobby-list [hobbyMetadata]="hobbyMetadata" (submitSelected)="submit($event)"></hobbify-hobby-list>
+    <hobbify-hobby-list
+            [edit]="edit"
+            (submitSelected)="submit($event)"></hobbify-hobby-list>
 </div>
