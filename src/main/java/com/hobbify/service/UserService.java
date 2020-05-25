@@ -1,8 +1,9 @@
 package com.hobbify.service;
 
+import com.hobbify.model.auth.CustomUser;
+import com.hobbify.model.auth.UserRequest;
+
 import java.util.List;
-import com.hobbify.model.CustomUser;
-import com.hobbify.model.UserRequest;
 
 public interface UserService {
   void resetCredentials();

@@ -1,2 +1,0 @@
-INSERT INTO authority (uuid, created_at, version, name) VALUES (1, '2020-04-26 21:38:00', 1, 'ROLE_USER');
-INSERT INTO authority (uuid, created_at, version, name) VALUES (2, '2020-04-26 21:38:00', 1, 'ROLE_ADMIN');
