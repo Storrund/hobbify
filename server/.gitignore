@@ -18,7 +18,6 @@ target/
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
 .nb-gradle/
 
@@ -28,4 +27,3 @@ nbdist/
 
 ### frontend ###
 npm-debug.*
-src/main/resources/static/
