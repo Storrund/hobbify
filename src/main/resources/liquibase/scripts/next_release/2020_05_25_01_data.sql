@@ -1,5 +1,5 @@
 
-insert into hobby_category values ('5ecd739ebeb44d5c8d519aec477fa8a2 ', CURRENT_TIMESTAMP, 1, '#2980b9', 'sports');
+insert into hobby_category values ('5ecd739ebeb44d5c8d519aec477fa8a2', CURRENT_TIMESTAMP, 1, '#2980b9', 'sports');
 insert into hobby_category values ('b8390ec4646844a5918bde0e9f760f22', CURRENT_TIMESTAMP, 1, '#e67e22', 'arts');
 insert into hobby_category values ('efb5342cba5a4f019ac58f1792328414', CURRENT_TIMESTAMP, 1, '#9b59b6', 'gastronomy');
 insert into hobby_category values ('620175934db647d3bc436f8a0fdf6d3d', CURRENT_TIMESTAMP, 1, '#1abc9c', 'technology');
