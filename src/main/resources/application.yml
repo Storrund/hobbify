@@ -15,7 +15,7 @@ spring:
       dll-aut: update
   liquibase:
     change-log: classpath:/liquibase/masterChangeLog.xml
-    enabled: true
+    enabled: false
 
 jwt:
   header: Authorization
