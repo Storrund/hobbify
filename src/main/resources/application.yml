@@ -3,9 +3,7 @@ app:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/hobbify_master
-    username: hobbify
-    password: root
+    url: ${JDBC_DATABASE_URL}
     driver-class-name:  org.postgresql.Driver
   jpa:
     properties:
