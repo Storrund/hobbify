@@ -29,5 +29,5 @@ insert into hobby values ('3738701a03f74b29b1e1ae74178fd113', CURRENT_TIMESTAMP,
 
 insert into hobby values ('015bd277c14d4ab2a3465688bab77eb8', CURRENT_TIMESTAMP, 1, 'icon-code', 'coding', '620175934db647d3bc436f8a0fdf6d3d');
 
-INSERT INTO authority (uuid, created_at, version, name) VALUES (1, '2020-04-26 21:38:00', 1, 'ROLE_USER');
-INSERT INTO authority (uuid, created_at, version, name) VALUES (2, '2020-04-26 21:38:00', 1, 'ROLE_ADMIN');
+INSERT INTO authority (uuid, created_at, version, name) VALUES ('1', '2020-04-26 21:38:00', 1, 'ROLE_USER');
+INSERT INTO authority (uuid, created_at, version, name) VALUES ('2', '2020-04-26 21:38:00', 1, 'ROLE_ADMIN');
