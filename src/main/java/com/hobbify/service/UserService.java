@@ -7,7 +7,7 @@ import com.hobbify.model.UserRequest;
 public interface UserService {
   void resetCredentials();
 
-  CustomUser findById(Long id);
+  CustomUser findById(String id);
 
   CustomUser findByUsername(String username);
 

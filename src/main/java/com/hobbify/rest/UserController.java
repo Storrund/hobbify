@@ -32,7 +32,7 @@ public class UserController {
 
 
   @RequestMapping(method = GET, value = "/user/{userId}")
-  public CustomUser loadById(@PathVariable Long userId) {
+  public CustomUser loadById(@PathVariable String userId) {
     return this.userService.findById(userId);
   }
 
@@ -56,7 +56,7 @@ public class UserController {
 
     CustomUser existCustomUser = this.userService.findByUsername(userRequest.getUsername());
     if (existCustomUser != null) {
-      throw new ResourceConflictException(userRequest.getId(), "Username already exists");
+      throw new ResourceConflictException(userRequest.getId().toString(), "Username already exists");
     }
     CustomUser customUser = this.userService.save(userRequest);
     HttpHeaders headers = new HttpHeaders();
