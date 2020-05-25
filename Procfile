@@ -1,1 +1,2 @@
 web: java $JAVA_OPTS -jar target/*.jar --p $PORT --spring.datasource.url=${JDBC_DATABASE_URL}
+release: ./mvnw -Dliquibase.propertyFile=src/main/resources/liquibase/liquibase_local.properties -Dliquibase.url=$JDBC_DATABASE_URL -Dliquibase.promptOnNonLocalDatabase=false liquibase:update
