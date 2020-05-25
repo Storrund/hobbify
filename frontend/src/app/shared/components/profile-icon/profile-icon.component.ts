@@ -11,16 +11,26 @@ export class ProfileIconComponent implements OnInit {
 
     @Input() lastName: string;
 
-    @Input() size: string;
+    private _size: number;
+    @Input() set size(value: number) {
+        this._size = value;
+        this.sizeDimensions = this._size * 3.43;
+    }
+
+    get size() {
+        return this._size;
+    }
 
     @Input() color: string;
+
+    sizeDimensions: number;
 
     constructor() {}
 
     ngOnInit() {
     }
 
-    getContent(): string{
+    getContent(): string {
         return this.firstName.charAt(0) + this.lastName.charAt(0);
     }
 }

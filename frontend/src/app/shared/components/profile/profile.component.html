@@ -3,7 +3,7 @@
         <hobbify-profile-icon
                 [firstName]="userProfile.firstName"
                 [lastName]="userProfile.lastName"
-                [size]="'30'"></hobbify-profile-icon>
+                [size]="30"></hobbify-profile-icon>
     </div>
     <div class="ui-g-9">
         <div class="profile-header">
@@ -12,7 +12,7 @@
                 <div *ngFor="let hobby of userProfile.hobbies">
                     <hobbify-hobby-icon
                             [iconTag]="hobby.iconTag"
-                            [size]="'12'"
+                            [size]="12"
                             [defaultColor]="'white'"
                             [backgroundColor]="'#FAA916'"
                             [borderColor]="'white'"></hobbify-hobby-icon>

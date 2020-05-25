@@ -9,7 +9,16 @@ export class HobbyIconComponent implements OnInit {
 
     @Input() iconTag: string;
 
-    @Input() size: string;
+    private _size: number;
+    @Input() set size(value: number) {
+        this._size = value;
+        this.sizeDimensions = this._size * 3.43;
+        this.fontSize = this._size * 1.4;
+    }
+
+    get size() {
+        return this._size;
+    }
 
     @Input() color: string;
 
@@ -20,6 +29,9 @@ export class HobbyIconComponent implements OnInit {
     @Input() borderColor: string = 'black';
 
     @Input() backgroundColor: string = 'white';
+
+    sizeDimensions: number;
+    fontSize: number;
 
     constructor() {}
 

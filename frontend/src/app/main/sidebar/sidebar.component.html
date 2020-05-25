@@ -10,7 +10,7 @@
             <div class="hobby-button" (click)="selectHobbyFeed(hobby)" [ngClass]="{'active': (selection != null && selection.uuid == hobby.uuid)}">
                 <hobbify-hobby-icon
                         [iconTag]="hobby.iconTag"
-                        [size]="'8'"
+                        [size]="8"
                         [borderColor]="'white'"></hobbify-hobby-icon>
                 <span>{{hobby.name}}</span>
             </div>
@@ -22,7 +22,7 @@
             <hobbify-profile-icon
                     [firstName]="profile.firstName"
                     [lastName]="profile.lastName"
-                    [size]="'13'"></hobbify-profile-icon>
+                    [size]="13"></hobbify-profile-icon>
             <span>My profile</span>
         </div>
         <button pButton class="ui-button-secondary" (click)="onFindFriends()" label="FIND FRIENDS"></button>
