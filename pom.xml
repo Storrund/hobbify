@@ -147,6 +147,7 @@
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 					<verbose>true</verbose>
 					<logging>debug</logging>
+					<url>${env.JDBC_DATABASE_URL}</url>
 				</configuration>
 				<dependencies>
 					<dependency>
