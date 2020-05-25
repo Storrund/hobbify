@@ -1,2 +1,2 @@
-release: mvnw -Dliquibase.changeLogFile=src/main/resources/liquibase/masterChangeLog.xml -Dliquibase.url=$JDBC_DATABASE_URL -Dliquibase.promptOnNonLocalDatabase=false liquibase:update
+release: ./mvnw -Dliquibase.changeLogFile=src/main/resources/liquibase/masterChangeLog.xml -Dliquibase.url=$JDBC_DATABASE_URL -Dliquibase.promptOnNonLocalDatabase=false liquibase:update
 web: java $JAVA_OPTS -jar target/*.jar --p $PORT --spring.datasource.url=${JDBC_DATABASE_URL}
