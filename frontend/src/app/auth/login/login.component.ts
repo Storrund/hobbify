@@ -43,18 +43,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  onResetCredentials() {
-    this.userService.resetCredentials()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(res => {
-        if (res.result === 'success') {
-          alert('Password has been reset to 123 for all accounts');
-        } else {
-          alert('Server error');
-        }
-      });
-  }
-
   onSubmit() {
     this.message = [];
 

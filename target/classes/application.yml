@@ -3,7 +3,8 @@ app:
 
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL}
+    #url: ${JDBC_DATABASE_URL}
+    url: jdbc:postgresql://localhost:5432/hobbify_master
     driver-class-name:  org.postgresql.Driver
   jpa:
     properties:
@@ -15,7 +16,7 @@ spring:
       dll-aut: update
   liquibase:
     change-log: classpath:/liquibase/masterChangeLog.xml
-    enabled: true
+    enabled: false
 
 jwt:
   header: Authorization
@@ -29,4 +30,6 @@ logging:
     com.bfwg: DEBUG
 
 server:
-  port: ${PORT:33500}
+  #port: ${PORT:33500}
+  port: 8080
+

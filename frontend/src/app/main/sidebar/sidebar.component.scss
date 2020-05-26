@@ -24,16 +24,27 @@
 .hobby-button{
   width: 100%;
   margin-bottom: 4px;
+  cursor: pointer;
+
+  .icon{
+    width: 40%;
+    text-align: right;
+  }
 
   * {
     display: inline-block;
   }
 
-  span {
-    margin-left: 10px;
-    text-transform: capitalize;
-    font-weight: 600;
-    vertical-align: middle;
+  .hobby-button-content{
+    width: 60%;
+    text-align: left;
+
+    span {
+      margin-left: 10px;
+      text-transform: capitalize;
+      font-weight: 600;
+      vertical-align: middle;
+    }
   }
 }
 
@@ -51,6 +62,7 @@
 
 .sidebar{
   margin: 0 -10px;
+  margin-bottom: 35px;
 }
 
 .profile-button{
@@ -68,4 +80,15 @@
 
 .active{
   background-color: #ffc151;
+}
+
+.logo{
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+h1{
+  margin-bottom: 0px;
 }

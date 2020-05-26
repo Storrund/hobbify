@@ -61,6 +61,7 @@ export class HobbyFeedComponent implements OnInit {
                 this.posts.push(post);
                 this.sortPosts();
                 this.postForm = false;
+                this.content = "";
             });
         }
     }

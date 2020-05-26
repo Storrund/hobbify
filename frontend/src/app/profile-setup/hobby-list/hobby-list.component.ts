@@ -43,7 +43,7 @@ export class HobbyListComponent implements OnInit{
 
     select(hobby: HobbyVoModel) {
         if (this.selectedHobbies.find(item => item.uuid === hobby.uuid)) {
-            const index = this.selectedHobbies.indexOf(hobby);
+            const index = this.selectedHobbies.findIndex(item => item.uuid === hobby.uuid);
             this.selectedHobbies.splice(index, 1);
         } else {
             this.selectedHobbies.push(hobby);
